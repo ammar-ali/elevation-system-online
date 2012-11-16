@@ -2,10 +2,10 @@
 <html>
 <head>
 </head>
- 
+
 <body>
 <h1>Customer Information</h1>
- 
+
 <h2>Add Customer</h2>
 <s:form action="addCustomer" >
   <s:textfield name="name" label="Name" value="" />
@@ -16,9 +16,9 @@
   <s:textfield name="company" label="Company" value="" />
   <s:submit />
 </s:form>
- 
+
 <h2>All Customers</h2>
- 
+
 <s:if test="customerList.size() > 0">
 <table border="1px" cellpadding="8px">
 	<tr>
@@ -45,6 +45,6 @@
 </s:if>
 <br/>
 <br/>
- 
+
 </body>
 </html>
