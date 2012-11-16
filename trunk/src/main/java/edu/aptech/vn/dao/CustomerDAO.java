@@ -3,9 +3,9 @@
  */
 package edu.aptech.vn.dao;
 
-import java.util.List;
-
 import edu.aptech.vn.model.Customer;
+
+import java.util.List;
 
 /**
  * @author BinhHC
@@ -13,5 +13,5 @@ import edu.aptech.vn.model.Customer;
  */
 public interface CustomerDAO {
 	void addCustomer(Customer customer);
-	List<Customer> listCustomer();	
+	List<Customer> listCustomer();
 }

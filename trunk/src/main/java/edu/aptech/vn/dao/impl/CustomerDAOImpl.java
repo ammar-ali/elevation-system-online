@@ -28,7 +28,7 @@ public class CustomerDAOImpl extends HibernateDaoSupport implements CustomerDAO 
 	 */
 	public List<Customer> listCustomer() {
 		
-		return getHibernateTemplate().find("from Customer");
+		return getHibernateTemplate().find("from user");
 	}
 
 }
