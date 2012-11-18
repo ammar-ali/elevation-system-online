@@ -13,8 +13,8 @@ import org.hibernate.criterion.Projections;
  */
 public class Main {
 
-    public static void main( String[] args ) {
-        Session session = HibernateUtil.getSession().openSession();
+	public static void main(String[] args) {
+		Session session = HibernateUtil.getSession().openSession();
         Feedback feedback = new Feedback();
         feedback.setName("asd gsg");
         feedback.setEmail("a@bfd.com");
@@ -31,11 +31,5 @@ public class Main {
         Criteria criteria = session.createCriteria(Feedback.class);
         criteria.setProjection(Projections.avg("rating"));
         System.out.println(criteria.uniqueResult());
-
-//        List<Feedback> fb = session.createQuery("from Feedback").list();
-//        List<Feedback> fb = criteria.list();
-//        for (Feedback f : fb) {
-//            System.out.println(f.getName());
-//        }
-    }
+	}
 }
