@@ -3,16 +3,15 @@
  */
 package edu.aptech.vn.action;
 
-import java.util.Map;
-
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
+
+import java.util.Map;
 
 /**
  * @author BinhHC
  *
  */
-public class LoginAction extends ActionSupport {
+public class LoginAction extends BaseAction {
 	private String username;
 	private String password;
 	

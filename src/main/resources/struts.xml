@@ -23,7 +23,7 @@
 			<result-type name="tiles"
 				class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
-		<action name="Login">
+		<action name="login">
 			<result>login.jsp</result>
 		</action>
 		<action name="doLogin" class="edu.aptech.vn.action.LoginAction"
