@@ -11,7 +11,7 @@ import java.io.Serializable;
  * Time: 5:44 PM
  */
 @Entity
-@Table(name = "feedback", catalog = Const.DB)
+@Table(name = "Feedback", catalog = Const.DB)
 public class Feedback extends BaseModel {
     private Integer id;
     private String name;

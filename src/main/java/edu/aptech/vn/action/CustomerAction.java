@@ -4,7 +4,6 @@
 package edu.aptech.vn.action;
 
 import com.opensymphony.xwork2.ModelDriven;
-import edu.aptech.vn.bo.CustomerBo;
 import edu.aptech.vn.model.Customer;
 import org.apache.log4j.Logger;
 
@@ -21,13 +20,7 @@ public class CustomerAction implements ModelDriven {
 	Customer customer = new Customer();
 	List<Customer> customerList = new ArrayList<Customer>();
 	private static final Logger logger = Logger.getLogger(CustomerAction.class);
-
-	CustomerBo customerBo;
-	//DI via Spring
-	public void setCustomerBo(CustomerBo customerBo) {
-		this.customerBo = customerBo;
-	}
-
+	
 	public Object getModel() {
 		return customer;
 	}
@@ -45,7 +38,6 @@ public class CustomerAction implements ModelDriven {
 
 		//save it
 		customer.setCreatedDate(new Date());
-		customerBo.addCustomer(customer);
 
 		if(logger.isDebugEnabled()){
 			logger.debug("Testing log4j .......");
@@ -53,7 +45,6 @@ public class CustomerAction implements ModelDriven {
 
 		//reload the customer list
 		customerList = null;
-		customerList = customerBo.listCustomer();
 
 		return "success";
 
@@ -62,7 +53,6 @@ public class CustomerAction implements ModelDriven {
 	//list all customers
 	public String listCustomer() throws Exception{
  
-		customerList = customerBo.listCustomer();
  
 		return "success";
  

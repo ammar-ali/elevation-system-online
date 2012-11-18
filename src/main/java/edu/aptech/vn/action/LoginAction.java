@@ -5,7 +5,14 @@ package edu.aptech.vn.action;
 
 import com.opensymphony.xwork2.ActionContext;
 
+import edu.aptech.vn.model.Feedback;
+import edu.aptech.vn.utils.HibernateUtil;
+
 import java.util.Map;
+
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
 
 /**
  * @author BinhHC
@@ -16,6 +23,24 @@ public class LoginAction extends BaseAction {
 	private String password;
 	
 	public String execute() throws Exception {
+/*		Session ss = HibernateUtil.getSession().openSession();
+        Feedback feedback = new Feedback();
+        feedback.setName("asd gsg");
+        feedback.setEmail("a@bfd.com");
+        feedback.setDescription("asd  fd hdfhngn fn34 y4ehrjtr");
+        feedback.setRating(10);*/
+
+//        session.beginTransaction();
+//        System.out.println(session.save(feedback));
+//        Feedback rs = (Feedback) session.get(Feedback.class, 2);
+//        System.out.println(rs.getName());
+
+//        session.getTransaction().commit();
+
+/*        Criteria criteria = ss.createCriteria(Feedback.class);
+        criteria.setProjection(Projections.avg("rating"));
+        System.out.println(criteria.uniqueResult());*/
+        
 		if ("admin".equals(username) && "passw0rd".equals(password)) {
 			Map session = ActionContext.getContext().getSession();
 			session.put("admin", "true");
