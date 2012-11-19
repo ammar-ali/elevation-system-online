@@ -8,5 +8,5 @@ import java.io.Serializable;
  * Date: 11/16/12
  * Time: 7:16 PM
  */
-public class BaseModel implements Serializable {
+public abstract class BaseModel implements Serializable {
 }

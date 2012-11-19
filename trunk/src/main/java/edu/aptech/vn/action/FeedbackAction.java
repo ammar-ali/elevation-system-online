@@ -3,25 +3,24 @@
  */
 package edu.aptech.vn.action;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.log4j.Logger;
-
+import com.opensymphony.xwork2.ModelDriven;
 import edu.aptech.vn.dao.FeedbackDAO;
 import edu.aptech.vn.model.Feedback;
+import org.apache.log4j.Logger;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.Result;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author BinhHC
  * 
  */
-public class FeedbackAction extends BaseAction {
+@Namespace("/feedback")
+public class FeedbackAction extends BaseAction implements ModelDriven {
 	private static final Logger logger = Logger.getLogger(FeedbackAction.class);
-	private Integer id;
-	private String name;
-	private String email;
-	private String description;
-	private Integer rating;
 	
 	Feedback feedback = new Feedback();
 	List<Feedback> feedbacks = new ArrayList<Feedback>();
@@ -32,7 +31,17 @@ public class FeedbackAction extends BaseAction {
 		return feedback;
 	}
 
+    @Action(value = "index", results={
+        @Result(name="success", location="index.jsp")
+    })
 	public String execute() throws Exception {
+		return SUCCESS;
+	}
+
+    @Action(value = "add", results={
+            @Result(name="success", location="list.jsp")
+    })
+	public String add() throws Exception {
 
 		logger.info("Feedback param: " + feedback.getName());
 		//Feedback feedback = new Feedback();
@@ -40,15 +49,24 @@ public class FeedbackAction extends BaseAction {
 		feedback.setEmail(email);
 		feedback.setDescription(description);
 		feedback.setRating(rating);*/
-		System.out.println(name);
 		dao.addFeedback(feedback);
 		return SUCCESS;
 	}
 
-	public String listFeedbacks() {
+    @Action(value = "list", results={
+            @Result(name="success", location="list.jsp")
+    })
+	public String list() {
 		feedbacks = dao.listFeedbacks();
 		return SUCCESS;
 	}
+
+    @Action(value = "view", results={
+            @Result(name="success", location="view.jsp")
+    })
+    public String view() {
+        return SUCCESS;
+    }
 
 	public Feedback getFeedback() {
 		return feedback;
