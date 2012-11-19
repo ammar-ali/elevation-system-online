@@ -5,19 +5,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title><tiles:insertAttribute name="title" ignore="true" />
 </title>
-<link rel="stylesheet" href="css/screen.css" type="text/css"
+<link rel="stylesheet" href="<%=request.getContextPath()%>/admin/css/screen.css" type="text/css"
 	media="screen" title="default" />
 <!--[if IE]>
 <link rel="stylesheet" media="all" type="text/css" href="css/pro_dropline_ie.css" />
 <![endif]-->
 
 <!--  jquery core -->
-<script src="js/jquery/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/admin/js/jquery/jquery-1.4.1.min.js" type="text/javascript"></script>
 
 <!--  checkbox styling script -->
-<script src="js/jquery/ui.core.js" type="text/javascript"></script>
-<script src="js/jquery/ui.checkbox.js" type="text/javascript"></script>
-<script src="js/jquery/jquery.bind.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/admin/js/jquery/ui.core.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/admin/js/jquery/ui.checkbox.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/admin/js/jquery/jquery.bind.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(function() {
 		$('input').checkBox();
@@ -33,7 +33,7 @@
 <![if !IE 7]>
 
 <!--  styled select box script version 1 -->
-<script src="js/jquery/jquery.selectbox-0.5.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/admin/js/jquery/jquery.selectbox-0.5.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.styledselect').selectbox({
@@ -47,7 +47,7 @@
 
 
 <!--  styled select box script version 2 -->
-<script src="js/jquery/jquery.selectbox-0.5_style_2.js"
+<script src="<%=request.getContextPath()%>/admin/js/jquery/jquery.selectbox-0.5_style_2.js"
 	type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -61,7 +61,7 @@
 </script>
 
 <!--  styled select box script version 3 -->
-<script src="js/jquery/jquery.selectbox-0.5_style_2.js"
+<script src="<%=request.getContextPath()%>/admin/js/jquery/jquery.selectbox-0.5_style_2.js"
 	type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -72,7 +72,7 @@
 </script>
 
 <!--  styled file upload script -->
-<script src="js/jquery/jquery.filestyle.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/admin/js/jquery/jquery.filestyle.js" type="text/javascript"></script>
 <script type="text/javascript" charset="utf-8">
 	$(function() {
 		$("input.file_1").filestyle({
@@ -85,11 +85,11 @@
 </script>
 
 <!-- Custom jquery scripts -->
-<script src="js/jquery/custom_jquery.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/admin/js/jquery/custom_jquery.js" type="text/javascript"></script>
 
 <!-- Tooltips -->
-<script src="js/jquery/jquery.tooltip.js" type="text/javascript"></script>
-<script src="js/jquery/jquery.dimensions.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/admin/js/jquery/jquery.tooltip.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/admin/js/jquery/jquery.dimensions.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(function() {
 		$('a.info-tooltip ').tooltip({
@@ -105,9 +105,9 @@
 </script>
 
 <!--  date picker script -->
-<link rel="stylesheet" href="css/datePicker.css" type="text/css" />
-<script src="js/jquery/date.js" type="text/javascript"></script>
-<script src="js/jquery/jquery.datePicker.js" type="text/javascript"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/admin/css/datePicker.css" type="text/css" />
+<script src="<%=request.getContextPath()%>/admin/js/jquery/date.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/admin/js/jquery/jquery.datePicker.js" type="text/javascript"></script>
 <script type="text/javascript" charset="utf-8">
 	$(function() {
 
@@ -157,7 +157,7 @@
 </script>
 
 <!-- MUST BE THE LAST SCRIPT IN <HEAD></HEAD></HEAD> png fix -->
-<script src="js/jquery/jquery.pngFix.pack.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/admin/js/jquery/jquery.pngFix.pack.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(document).pngFix();
