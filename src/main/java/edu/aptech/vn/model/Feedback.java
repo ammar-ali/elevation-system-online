@@ -3,7 +3,6 @@ package edu.aptech.vn.model;
 import edu.aptech.vn.utils.Const;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * User: LongDH
@@ -69,7 +68,7 @@ public class Feedback extends BaseModel {
         this.rating = rating;
     }
 
-    @Column(name = "[created]")
+    @Column(name = "created")
     public Integer getCreated() {
         return created;
     }

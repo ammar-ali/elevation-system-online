@@ -6,7 +6,7 @@
 <s:head />
 </head>
 <body>
-   <s:form action="addFeedback" method="POST">
+   <s:form action="add" method="POST">
    <s:textfield name="name" id="name" label="name"/>
    <s:textfield name="email" id="email" label="email"/>
    <s:textfield name="description" id="description" label="description"/>

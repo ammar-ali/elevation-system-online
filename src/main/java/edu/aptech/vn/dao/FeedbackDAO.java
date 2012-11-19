@@ -3,19 +3,18 @@
  */
 package edu.aptech.vn.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.hibernate.Session;
-
 import edu.aptech.vn.model.Feedback;
 import edu.aptech.vn.utils.HibernateUtil;
+import org.hibernate.Session;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author BinhHC
  * 
  */
-public class FeedbackDAO {
+public class FeedbackDAO extends BaseDAO {
 
 	Session session = HibernateUtil.getSession().openSession();
 

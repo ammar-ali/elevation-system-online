@@ -3,14 +3,13 @@
  */
 package edu.aptech.vn.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author BinhHC
  *
  */
-public class Customer implements Serializable {
+public class Customer extends BaseModel {
 	private Long customerId;
 	private String name;
 	private String address;
