@@ -27,12 +27,11 @@ public class FeedbackAction extends BaseAction implements ModelDriven {
 	protected FeedbackDAO dao = new FeedbackDAO();
 
 	public Object getModel() {
-		// TODO Auto-generated method stub
 		return feedback;
 	}
 
     @Action(value = "index", results={
-        @Result(name="success", location="index.jsp")
+            @Result(name="success", location="index.jsp")
     })
 	public String execute() throws Exception {
     	feedbacks = dao.listFeedbacks();
