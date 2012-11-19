@@ -22,9 +22,9 @@ import java.util.List;
 public class FeedbackAction extends BaseAction implements ModelDriven {
 	private static final Logger logger = Logger.getLogger(FeedbackAction.class);
 	
-	Feedback feedback = new Feedback();
-	List<Feedback> feedbacks = new ArrayList<Feedback>();
-	FeedbackDAO dao = new FeedbackDAO();
+	protected Feedback feedback = new Feedback();
+	protected List<Feedback> feedbacks = new ArrayList<Feedback>();
+	protected FeedbackDAO dao = new FeedbackDAO();
 
 	public Object getModel() {
 		// TODO Auto-generated method stub
@@ -35,6 +35,7 @@ public class FeedbackAction extends BaseAction implements ModelDriven {
         @Result(name="success", location="index.jsp")
     })
 	public String execute() throws Exception {
+    	feedbacks = dao.listFeedbacks();
 		return SUCCESS;
 	}
 

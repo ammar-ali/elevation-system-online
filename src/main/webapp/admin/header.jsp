@@ -5,7 +5,7 @@
 
 	<!-- start logo -->
 	<div id="logo">
-		<a href=""><img src="images/shared/logo.png" width="156"
+		<a href=""><img src="<%=request.getContextPath()%>/admin/images/shared/logo.png" width="156"
 			height="40" alt="" />
 		</a>
 	</div>
@@ -27,7 +27,7 @@
 						<option value="">Clients</option>
 						<option value="">News</option>
 				</select></td>
-				<td><input type="image" src="images/shared/top_search_btn.gif" />
+				<td><input type="image" src="<%=request.getContextPath()%>/admin/images/shared/top_search_btn.gif" />
 				</td>
 			</tr>
 		</table>
