@@ -1,10 +1,8 @@
 package edu.aptech.vn;
 
-import edu.aptech.vn.model.Feedback;
+import edu.aptech.vn.model.User;
 import edu.aptech.vn.utils.HibernateUtil;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.criterion.Projections;
 
 /**
  * User: LongDH
@@ -15,21 +13,25 @@ public class Main {
 
 	public static void main(String[] args) {
 		Session session = HibernateUtil.getSession().openSession();
-        Feedback feedback = new Feedback();
-        feedback.setName("123asd gsg");
-        feedback.setEmail("5435a@bfd.com");
-        feedback.setDescription(" 64564asd  fd hdfhngn fn34 y4ehrjtr");
-        feedback.setRating(7);
+//        Feedback feedback = new Feedback();
+//        feedback.setName("123asd gsg");
+//        feedback.setEmail("5435a@bfd.com");
+//        feedback.setDescription(" 64564asd  fd hdfhngn fn34 y4ehrjtr");
+//        feedback.setRating(7);
+//
+//        session.beginTransaction();
+//        System.out.println(session.save(feedback));
+//        session.getTransaction().commit();
+//
+//        Feedback rs = (Feedback) session.get(Feedback.class, 4);
+//        System.out.println(rs.getName());
 
-        session.beginTransaction();
-        System.out.println(session.save(feedback));
-        session.getTransaction().commit();
+//        Criteria criteria = session.createCriteria(Feedback.class);
+//        criteria.setProjection(Projections.avg("rating"));
+//        System.out.println(criteria.uniqueResult());
 
-        Feedback rs = (Feedback) session.get(Feedback.class, 4);
-        System.out.println(rs.getName());
-
-        Criteria criteria = session.createCriteria(Feedback.class);
-        criteria.setProjection(Projections.avg("rating"));
-        System.out.println(criteria.uniqueResult());
+        User us = (User) session.get(User.class, 1);
+        System.out.println(us.getUsername());
+        System.out.println(us.getCountry().getName());
 	}
 }
