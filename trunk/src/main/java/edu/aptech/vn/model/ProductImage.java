@@ -1,20 +1,23 @@
 package edu.aptech.vn.model;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.sql.Timestamp;
 
 /**
  * User: LongDH
  * Date: 11/20/12
- * Time: 3:53 PM
+ * Time: 6:11 PM
  */
+@javax.persistence.Table(name = "product_image")
 @Entity
-public class Image {
+public class ProductImage {
     private Integer id;
 
     @javax.persistence.Column(name = "id")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -76,13 +79,13 @@ public class Image {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Image image = (Image) o;
+        ProductImage that = (ProductImage) o;
 
-        if (created != null ? !created.equals(image.created) : image.created != null) return false;
-        if (id != null ? !id.equals(image.id) : image.id != null) return false;
-        if (src != null ? !src.equals(image.src) : image.src != null) return false;
-        if (status != null ? !status.equals(image.status) : image.status != null) return false;
-        if (title != null ? !title.equals(image.title) : image.title != null) return false;
+        if (created != null ? !created.equals(that.created) : that.created != null) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (src != null ? !src.equals(that.src) : that.src != null) return false;
+        if (status != null ? !status.equals(that.status) : that.status != null) return false;
+        if (title != null ? !title.equals(that.title) : that.title != null) return false;
 
         return true;
     }
@@ -97,15 +100,15 @@ public class Image {
         return result;
     }
 
-    private Gallery gallery;
+    private Product product;
 
     @ManyToOne
-    @javax.persistence.JoinColumn(name = "gallery_id", referencedColumnName = "id", nullable = false)
-    public Gallery getGallery() {
-        return gallery;
+    @javax.persistence.JoinColumn(name = "product_id", referencedColumnName = "id", nullable = false)
+    public Product getProduct() {
+        return product;
     }
 
-    public void setGallery(Gallery gallery) {
-        this.gallery = gallery;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

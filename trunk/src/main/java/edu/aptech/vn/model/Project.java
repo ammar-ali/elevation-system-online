@@ -96,16 +96,4 @@ public class Project extends BaseModel {
         result = 31 * result + (created != null ? created.hashCode() : 0);
         return result;
     }
-
-    private Gallery gallery;
-
-    @ManyToOne
-    @javax.persistence.JoinColumn(name = "gallery_id", referencedColumnName = "id")
-    public Gallery getGallery() {
-        return gallery;
-    }
-
-    public void setGallery(Gallery gallery) {
-        this.gallery = gallery;
-    }
 }
