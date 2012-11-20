@@ -1,29 +1,21 @@
 package edu.aptech.vn.model;
 
-import edu.aptech.vn.utils.Const;
-
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.sql.Timestamp;
 
 /**
  * User: LongDH
- * Date: 11/16/12
- * Time: 5:44 PM
+ * Date: 11/20/12
+ * Time: 3:53 PM
  */
 @Entity
-@Table(name = "Feedback", catalog = Const.DB)
-public class Feedback extends BaseModel {
+public class Feedback {
     private Integer id;
-    private String name;
-    private String email;
-    private String description;
-    private Integer rating;
-    private Integer created;
 
-    public Feedback() {}
-
+    @javax.persistence.Column(name = "id")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true)
     public Integer getId() {
         return id;
     }
@@ -32,7 +24,10 @@ public class Feedback extends BaseModel {
         this.id = id;
     }
 
-    @Column(name = "name")
+    private String name;
+
+    @javax.persistence.Column(name = "name")
+    @Basic
     public String getName() {
         return name;
     }
@@ -41,7 +36,10 @@ public class Feedback extends BaseModel {
         this.name = name;
     }
 
-    @Column(name = "email")
+    private String email;
+
+    @javax.persistence.Column(name = "email")
+    @Basic
     public String getEmail() {
         return email;
     }
@@ -50,7 +48,10 @@ public class Feedback extends BaseModel {
         this.email = email;
     }
 
-    @Column(name = "description")
+    private String description;
+
+    @javax.persistence.Column(name = "description")
+    @Basic
     public String getDescription() {
         return description;
     }
@@ -59,7 +60,10 @@ public class Feedback extends BaseModel {
         this.description = description;
     }
 
-    @Column(name = "rating")
+    private Integer rating;
+
+    @javax.persistence.Column(name = "rating")
+    @Basic
     public Integer getRating() {
         return rating;
     }
@@ -68,12 +72,44 @@ public class Feedback extends BaseModel {
         this.rating = rating;
     }
 
-    @Column(name = "created")
-    public Integer getCreated() {
+    private Timestamp created;
+
+    @javax.persistence.Column(name = "created")
+    @Basic
+    public Timestamp getCreated() {
         return created;
     }
 
-    public void setCreated(Integer created) {
+    public void setCreated(Timestamp created) {
         this.created = created;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Feedback feedback = (Feedback) o;
+
+        if (created != null ? !created.equals(feedback.created) : feedback.created != null) return false;
+        if (description != null ? !description.equals(feedback.description) : feedback.description != null)
+            return false;
+        if (email != null ? !email.equals(feedback.email) : feedback.email != null) return false;
+        if (id != null ? !id.equals(feedback.id) : feedback.id != null) return false;
+        if (name != null ? !name.equals(feedback.name) : feedback.name != null) return false;
+        if (rating != null ? !rating.equals(feedback.rating) : feedback.rating != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (rating != null ? rating.hashCode() : 0);
+        result = 31 * result + (created != null ? created.hashCode() : 0);
+        return result;
     }
 }

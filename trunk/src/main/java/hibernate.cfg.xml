@@ -6,11 +6,20 @@
     <session-factory>
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.password">123456</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306</property>
+        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/elevation</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
-        <mapping class="edu.aptech.vn.model.Feedback"></mapping>
+        <mapping class="edu.aptech.vn.model.Feedback"/>
+        <mapping class="edu.aptech.vn.model.Complaint"/>
+        <mapping class="edu.aptech.vn.model.Country"/>
+        <mapping class="edu.aptech.vn.model.Gallery"/>
+        <mapping class="edu.aptech.vn.model.Image"/>
+        <mapping class="edu.aptech.vn.model.Order"/>
+        <mapping class="edu.aptech.vn.model.Payment"/>
+        <mapping class="edu.aptech.vn.model.Product"/>
+        <mapping class="edu.aptech.vn.model.Project"/>
+        <mapping class="edu.aptech.vn.model.User"/>
     </session-factory>
 </hibernate-configuration>
