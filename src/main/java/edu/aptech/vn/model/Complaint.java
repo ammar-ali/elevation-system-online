@@ -1,9 +1,6 @@
 package edu.aptech.vn.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
@@ -12,11 +9,12 @@ import java.sql.Timestamp;
  * Time: 3:53 PM
  */
 @Entity
-public class Complaint {
+public class Complaint extends BaseModel {
     private Integer id;
 
     @javax.persistence.Column(name = "id")
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }

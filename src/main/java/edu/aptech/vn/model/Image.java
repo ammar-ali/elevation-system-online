@@ -1,9 +1,6 @@
 package edu.aptech.vn.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
@@ -17,6 +14,7 @@ public class Image {
 
     @javax.persistence.Column(name = "id")
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }

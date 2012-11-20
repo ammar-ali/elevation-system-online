@@ -1,11 +1,9 @@
 package edu.aptech.vn.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * User: LongDH
@@ -13,11 +11,12 @@ import java.util.Collection;
  * Time: 3:53 PM
  */
 @Entity
-public class Gallery {
+public class Gallery extends BaseModel {
     private Integer id;
 
     @javax.persistence.Column(name = "id")
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -58,36 +57,36 @@ public class Gallery {
         return result;
     }
 
-    private Collection<Image> images;
+    private List<Image> images = new ArrayList<Image>();
 
     @OneToMany(mappedBy = "gallery")
-    public Collection<Image> getImages() {
+    public List<Image> getImages() {
         return images;
     }
 
-    public void setImages(Collection<Image> images) {
+    public void setImages(List<Image> images) {
         this.images = images;
     }
 
-    private Collection<Product> products;
+    private List<Product> products = new ArrayList<Product>();
 
     @OneToMany(mappedBy = "gallery")
-    public Collection<Product> getProducts() {
+    public List<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(Collection<Product> products) {
+    public void setProducts(List<Product> products) {
         this.products = products;
     }
 
-    private Collection<Project> projects;
+    private List<Project> projects = new ArrayList<Project>();
 
     @OneToMany(mappedBy = "gallery")
-    public Collection<Project> getProjects() {
+    public List<Project> getProjects() {
         return projects;
     }
 
-    public void setProjects(Collection<Project> projects) {
+    public void setProjects(List<Project> projects) {
         this.projects = projects;
     }
 }

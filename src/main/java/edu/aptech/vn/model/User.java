@@ -2,7 +2,8 @@ package edu.aptech.vn.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * User: LongDH
@@ -10,11 +11,12 @@ import java.util.Collection;
  * Time: 3:53 PM
  */
 @Entity
-public class User {
+public class User extends BaseModel {
     private Integer id;
 
     @javax.persistence.Column(name = "id")
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -181,25 +183,25 @@ public class User {
         return result;
     }
 
-    private Collection<Complaint> complaints;
+    private List<Complaint> complaints = new ArrayList<Complaint>();
 
     @OneToMany(mappedBy = "user")
-    public Collection<Complaint> getComplaints() {
+    public List<Complaint> getComplaints() {
         return complaints;
     }
 
-    public void setComplaints(Collection<Complaint> complaints) {
+    public void setComplaints(List<Complaint> complaints) {
         this.complaints = complaints;
     }
 
-    private Collection<Order> orders;
+    private List<Order> orders = new ArrayList<Order>();
 
     @OneToMany(mappedBy = "user")
-    public Collection<Order> getOrders() {
+    public List<Order> getOrders() {
         return orders;
     }
 
-    public void setOrders(Collection<Order> orders) {
+    public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
 
