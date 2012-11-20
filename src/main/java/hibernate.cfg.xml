@@ -14,13 +14,12 @@
         <mapping class="edu.aptech.vn.model.Feedback"/>
         <mapping class="edu.aptech.vn.model.Complaint"/>
         <mapping class="edu.aptech.vn.model.Country"/>
-        <mapping class="edu.aptech.vn.model.Gallery"/>
-        <mapping class="edu.aptech.vn.model.Image"/>
         <mapping class="edu.aptech.vn.model.Order"/>
         <mapping class="edu.aptech.vn.model.Payment"/>
         <mapping class="edu.aptech.vn.model.Product"/>
         <mapping class="edu.aptech.vn.model.Project"/>
         <mapping class="edu.aptech.vn.model.User"/>
         <mapping class="edu.aptech.vn.model.OrderProduct"/>
+        <mapping class="edu.aptech.vn.model.ProductImage"/>
     </session-factory>
 </hibernate-configuration>

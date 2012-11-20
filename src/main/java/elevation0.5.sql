@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 20, 2012 at 10:05 AM
+-- Generation Time: Nov 20, 2012 at 12:15 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -322,7 +322,7 @@ CREATE TABLE IF NOT EXISTS `feedback` (
   `rating` int(11) DEFAULT '5',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `feedback`
@@ -332,38 +332,8 @@ INSERT INTO `feedback` (`id`, `name`, `email`, `description`, `rating`, `created
 (2, 'test', 'a@b.com', 'this is a fucking test', 1, '2012-11-19 05:33:39'),
 (3, 'asd gsg', 'a@bfd.com', 'asd  fd hdfhngn fn34 y4ehrjtr', 10, '2012-11-19 05:33:39'),
 (4, '123asd gsg', '5435a@bfd.com', ' 64564asd  fd hdfhngn fn34 y4ehrjtr', 7, '2012-11-19 05:34:32'),
-(5, 'Long', 'hunglong@dynabyte.vn', '34', 5, '2012-11-19 10:10:20');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `gallery`
---
-
-DROP TABLE IF EXISTS `gallery`;
-CREATE TABLE IF NOT EXISTS `gallery` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `image`
---
-
-DROP TABLE IF EXISTS `image`;
-CREATE TABLE IF NOT EXISTS `image` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `gallery_id` int(11) NOT NULL,
-  `src` varchar(255) NOT NULL,
-  `title` text,
-  `status` int(11) NOT NULL DEFAULT '1',
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `gallery_id` (`gallery_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+(5, 'Long', 'hunglong@dynabyte.vn', '34', 5, '2012-11-19 10:10:20'),
+(6, '235 3yrtjhrj ', '5435a@bfd.com', '  fdhfgj hjk jk tykjty', 9, '2012-11-20 10:29:44');
 
 -- --------------------------------------------------------
 
@@ -387,7 +357,16 @@ CREATE TABLE IF NOT EXISTS `order` (
   KEY `user_id` (`user_id`),
   KEY `payment_id` (`payment_id`),
   KEY `country_id` (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `order`
+--
+
+INSERT INTO `order` (`id`, `user_id`, `payment_id`, `name`, `address`, `city`, `country_id`, `phone`, `status`, `created`) VALUES
+(1, 1, 1, 'Cash on Delivery', NULL, NULL, 1, NULL, 0, '2012-11-20 09:18:27'),
+(2, 1, 1, NULL, NULL, NULL, 1, NULL, NULL, '2012-11-20 10:31:52'),
+(5, 1, 1, NULL, NULL, NULL, 1, NULL, NULL, '2012-11-20 10:38:51');
 
 -- --------------------------------------------------------
 
@@ -401,10 +380,18 @@ CREATE TABLE IF NOT EXISTS `order_product` (
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` float NOT NULL,
-  UNIQUE KEY `order_product` (`order_id`,`product_id`),
+  PRIMARY KEY (`order_id`,`product_id`),
   KEY `product_id` (`product_id`),
   KEY `order_id` (`order_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `order_product`
+--
+
+INSERT INTO `order_product` (`order_id`, `product_id`, `quantity`, `price`) VALUES
+(5, 1, 1, 100.5),
+(5, 2, 2, 200.9);
 
 -- --------------------------------------------------------
 
@@ -438,14 +425,38 @@ INSERT INTO `payment` (`id`, `name`, `status`) VALUES
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `gallery_id` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `description` text,
   `price` float DEFAULT NULL,
   `status` int(11) DEFAULT '1',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`id`, `name`, `description`, `price`, `status`, `created`) VALUES
+(1, 'Product 1', NULL, NULL, 1, '2012-11-20 09:18:56'),
+(2, 'Product 2', NULL, NULL, 1, '2012-11-20 09:19:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_image`
+--
+
+DROP TABLE IF EXISTS `product_image`;
+CREATE TABLE IF NOT EXISTS `product_image` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  `src` varchar(255) NOT NULL,
+  `title` text,
+  `status` int(11) NOT NULL DEFAULT '1',
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `gallery_id` (`gallery_id`)
+  KEY `product_id` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -457,13 +468,11 @@ CREATE TABLE IF NOT EXISTS `product` (
 DROP TABLE IF EXISTS `project`;
 CREATE TABLE IF NOT EXISTS `project` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `gallery_id` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `description` text,
   `status` int(11) DEFAULT '1',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `gallery_id` (`gallery_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -511,12 +520,6 @@ ALTER TABLE `complaint`
   ADD CONSTRAINT `complaint_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
--- Constraints for table `image`
---
-ALTER TABLE `image`
-  ADD CONSTRAINT `image_ibfk_1` FOREIGN KEY (`gallery_id`) REFERENCES `gallery` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `order`
 --
 ALTER TABLE `order`
@@ -532,16 +535,10 @@ ALTER TABLE `order_product`
   ADD CONSTRAINT `order_product_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `product`
+-- Constraints for table `product_image`
 --
-ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`gallery_id`) REFERENCES `gallery` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `project`
---
-ALTER TABLE `project`
-  ADD CONSTRAINT `project_ibfk_1` FOREIGN KEY (`gallery_id`) REFERENCES `gallery` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `product_image`
+  ADD CONSTRAINT `product_image_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
 
 --
 -- Constraints for table `user`

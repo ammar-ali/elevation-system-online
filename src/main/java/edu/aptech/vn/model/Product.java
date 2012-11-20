@@ -113,18 +113,6 @@ public class Product extends BaseModel {
         return result;
     }
 
-    private Gallery gallery;
-
-    @ManyToOne
-    @JoinColumn(name = "gallery_id", referencedColumnName = "id")
-    public Gallery getGallery() {
-        return gallery;
-    }
-
-    public void setGallery(Gallery gallery) {
-        this.gallery = gallery;
-    }
-
     private List<Order> orders = new ArrayList<Order>();
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "products")
@@ -145,5 +133,16 @@ public class Product extends BaseModel {
 
     public void setOrderProducts(List<OrderProduct> orderProducts) {
         this.orderProducts = orderProducts;
+    }
+
+    private List<ProductImage> images;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    public List<ProductImage> getImages() {
+        return images;
+    }
+
+    public void setImages(List<ProductImage> images) {
+        this.images = images;
     }
 }

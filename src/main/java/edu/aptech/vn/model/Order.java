@@ -192,7 +192,7 @@ public class Order extends BaseModel {
 
     private List<OrderProduct> orderProducts = new ArrayList<OrderProduct>();
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.order", cascade=CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.order", cascade = CascadeType.ALL)
     public List<OrderProduct> getOrderProducts() {
         return orderProducts;
     }
