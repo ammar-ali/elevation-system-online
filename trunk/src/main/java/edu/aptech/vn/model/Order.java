@@ -2,7 +2,8 @@ package edu.aptech.vn.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * User: LongDH
@@ -10,11 +11,13 @@ import java.util.Collection;
  * Time: 3:53 PM
  */
 @Entity
-public class Order {
+@Table(name = "`order`")
+public class Order extends BaseModel {
     private Integer id;
 
     @javax.persistence.Column(name = "id")
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -125,14 +128,14 @@ public class Order {
         return result;
     }
 
-    private Collection<Complaint> complaints;
+    private List<Complaint> complaints = new ArrayList<Complaint>();
 
     @OneToMany(mappedBy = "order")
-    public Collection<Complaint> getComplaints() {
+    public List<Complaint> getComplaints() {
         return complaints;
     }
 
-    public void setComplaints(Collection<Complaint> complaints) {
+    public void setComplaints(List<Complaint> complaints) {
         this.complaints = complaints;
     }
 
@@ -170,5 +173,31 @@ public class Order {
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    private List<Product> products = new ArrayList<Product>();
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "order_product", joinColumns = {
+            @JoinColumn(name = "order_id", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "product_id", nullable = false, updatable = false) }
+    )
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    private List<OrderProduct> orderProducts = new ArrayList<OrderProduct>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.order", cascade=CascadeType.ALL)
+    public List<OrderProduct> getOrderProducts() {
+        return orderProducts;
+    }
+
+    public void setOrderProducts(List<OrderProduct> orderProducts) {
+        this.orderProducts = orderProducts;
     }
 }

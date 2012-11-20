@@ -1,10 +1,8 @@
 package edu.aptech.vn.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.Collection;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * User: LongDH
@@ -12,11 +10,12 @@ import java.util.Collection;
  * Time: 3:53 PM
  */
 @Entity
-public class Country {
+public class Country extends BaseModel {
     private Integer id;
 
     @javax.persistence.Column(name = "id")
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -85,25 +84,25 @@ public class Country {
         return result;
     }
 
-    private Collection<Order> orders;
+    private List<Order> orders = new ArrayList<Order>();
 
     @OneToMany(mappedBy = "country")
-    public Collection<Order> getOrders() {
+    public List<Order> getOrders() {
         return orders;
     }
 
-    public void setOrders(Collection<Order> orders) {
+    public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
 
-    private Collection<User> users;
+    private List<User> users = new ArrayList<User>();
 
     @OneToMany(mappedBy = "country")
-    public Collection<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Collection<User> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 }

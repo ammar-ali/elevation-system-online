@@ -1,10 +1,8 @@
 package edu.aptech.vn.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.Collection;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * User: LongDH
@@ -12,11 +10,12 @@ import java.util.Collection;
  * Time: 3:53 PM
  */
 @Entity
-public class Payment {
+public class Payment extends BaseModel {
     private Integer id;
 
     @javax.persistence.Column(name = "id")
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -71,14 +70,14 @@ public class Payment {
         return result;
     }
 
-    private Collection<Order> orders;
+    private List<Order> orders = new ArrayList<Order>();
 
     @OneToMany(mappedBy = "payment")
-    public Collection<Order> getOrders() {
+    public List<Order> getOrders() {
         return orders;
     }
 
-    public void setOrders(Collection<Order> orders) {
+    public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
 }

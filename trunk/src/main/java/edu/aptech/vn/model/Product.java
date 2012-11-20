@@ -2,6 +2,8 @@ package edu.aptech.vn.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * User: LongDH
@@ -9,11 +11,12 @@ import java.sql.Timestamp;
  * Time: 3:53 PM
  */
 @Entity
-public class Product {
+public class Product extends BaseModel {
     private Integer id;
 
     @javax.persistence.Column(name = "id")
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -120,5 +123,27 @@ public class Product {
 
     public void setGallery(Gallery gallery) {
         this.gallery = gallery;
+    }
+
+    private List<Order> orders = new ArrayList<Order>();
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "products")
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    private List<OrderProduct> orderProducts = new ArrayList<OrderProduct>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.product")
+    public List<OrderProduct> getOrderProducts() {
+        return orderProducts;
+    }
+
+    public void setOrderProducts(List<OrderProduct> orderProducts) {
+        this.orderProducts = orderProducts;
     }
 }
