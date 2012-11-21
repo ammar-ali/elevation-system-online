@@ -148,3 +148,11 @@
 </div>
 <div class="clear"></div>
 <!--  start nav-outer -->
+
+</div>
+	<!--  start nav-outer-repeat................................................... END -->
+	<div class="clear"></div>
+	<!-- start content-outer -->
+	<div id="content-outer">
+		<!-- start content -->
+		<div id="content">
