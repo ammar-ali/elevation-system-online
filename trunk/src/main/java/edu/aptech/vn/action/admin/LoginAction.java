@@ -27,7 +27,7 @@ public class LoginAction extends edu.aptech.vn.action.LoginAction {
 	@Override
 	@Action(value = "dologin", results = { @Result(name = "success", type = "redirect", location = "index") })
 	public String doLogin() {
-		System.out.println("Here we are");
+		
 		if ("admin".equals(user.getUsername())
 				&& "passw0rd".equals(user.getPassword())) {
 			Map session = ActionContext.getContext().getSession();
