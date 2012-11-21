@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 3.5.2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 20, 2012 at 12:15 PM
--- Server version: 5.5.16
--- PHP Version: 5.3.8
+-- Generation Time: Nov 21, 2012 at 07:07 PM
+-- Server version: 5.5.25a
+-- PHP Version: 5.4.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -319,7 +319,7 @@ CREATE TABLE IF NOT EXISTS `feedback` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `description` text NOT NULL,
-  `rating` int(11) DEFAULT '5',
+  `rating` int(11) NOT NULL DEFAULT '10',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
@@ -351,13 +351,13 @@ CREATE TABLE IF NOT EXISTS `order` (
   `city` varchar(255) DEFAULT NULL,
   `country_id` int(11) DEFAULT NULL,
   `phone` varchar(63) DEFAULT NULL,
-  `status` int(11) DEFAULT '0',
+  `status` int(11) NOT NULL DEFAULT '0',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `payment_id` (`payment_id`),
   KEY `country_id` (`country_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `order`
@@ -365,8 +365,8 @@ CREATE TABLE IF NOT EXISTS `order` (
 
 INSERT INTO `order` (`id`, `user_id`, `payment_id`, `name`, `address`, `city`, `country_id`, `phone`, `status`, `created`) VALUES
 (1, 1, 1, 'Cash on Delivery', NULL, NULL, 1, NULL, 0, '2012-11-20 09:18:27'),
-(2, 1, 1, NULL, NULL, NULL, 1, NULL, NULL, '2012-11-20 10:31:52'),
-(5, 1, 1, NULL, NULL, NULL, 1, NULL, NULL, '2012-11-20 10:38:51');
+(2, 1, 1, NULL, NULL, NULL, 1, NULL, 0, '2012-11-20 10:31:52'),
+(5, 1, 1, NULL, NULL, NULL, 1, NULL, 0, '2012-11-20 10:38:51');
 
 -- --------------------------------------------------------
 
@@ -403,9 +403,9 @@ DROP TABLE IF EXISTS `payment`;
 CREATE TABLE IF NOT EXISTS `payment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `status` int(11) DEFAULT '1',
+  `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `payment`
@@ -428,7 +428,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `name` varchar(255) NOT NULL,
   `description` text,
   `price` float DEFAULT NULL,
-  `status` int(11) DEFAULT '1',
+  `status` int(11) NOT NULL DEFAULT '1',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
@@ -453,7 +453,6 @@ CREATE TABLE IF NOT EXISTS `product_image` (
   `product_id` int(11) NOT NULL,
   `src` varchar(255) NOT NULL,
   `title` text,
-  `status` int(11) NOT NULL DEFAULT '1',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `product_id` (`product_id`)
@@ -470,7 +469,7 @@ CREATE TABLE IF NOT EXISTS `project` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` text,
-  `status` int(11) DEFAULT '1',
+  `status` int(11) NOT NULL DEFAULT '1',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -492,8 +491,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `country_id` int(11) DEFAULT NULL,
   `phone` varchar(63) DEFAULT NULL,
   `company` varchar(255) DEFAULT NULL,
-  `type` int(11) DEFAULT '0',
-  `status` int(11) DEFAULT '0',
+  `type` int(11) NOT NULL DEFAULT '0',
+  `status` int(11) NOT NULL DEFAULT '1',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),

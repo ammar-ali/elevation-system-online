@@ -2,6 +2,8 @@ package edu.aptech.vn.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * User: LongDH
@@ -10,6 +12,13 @@ import java.sql.Timestamp;
  */
 @Entity
 public class Project extends BaseModel {
+	public static final Map<Integer, String> STATUS = new HashMap<Integer, String>();
+
+	static {
+		STATUS.put(0, "inactive");
+		STATUS.put(1, "active");
+	}
+
     private Integer id;
 
     @javax.persistence.Column(name = "id")
@@ -47,7 +56,7 @@ public class Project extends BaseModel {
         this.description = description;
     }
 
-    private Integer status;
+    private Integer status = 1;
 
     @javax.persistence.Column(name = "status")
     @Basic

@@ -59,7 +59,7 @@ public class Feedback extends BaseModel {
         this.description = description;
     }
 
-    private Integer rating;
+    private Integer rating = 10;
 
     @javax.persistence.Column(name = "rating")
     @Basic
