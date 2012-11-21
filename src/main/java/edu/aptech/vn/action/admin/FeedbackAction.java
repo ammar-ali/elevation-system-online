@@ -6,15 +6,13 @@ package edu.aptech.vn.action.admin;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
-import org.apache.struts2.convention.annotation.Results;
-import org.apache.struts2.views.tiles.TilesResult;
 
 
 /**
  * @author BinhHC
  *
  */
-@Namespace("/admin")
+@Namespace("/admin/feedback")
 public class FeedbackAction extends edu.aptech.vn.action.FeedbackAction{
 
 	@Override
@@ -27,7 +25,7 @@ public class FeedbackAction extends edu.aptech.vn.action.FeedbackAction{
 
 	@Override
 	@Action(value = "add", results={
-            @Result(name="success", type="redirect", location="feedback/index")
+            @Result(name="success", type="redirect", location="index")
     })
 	public String add() throws Exception {
 		

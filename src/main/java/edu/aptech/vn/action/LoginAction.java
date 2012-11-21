@@ -3,17 +3,23 @@
  */
 package edu.aptech.vn.action;
 
-import com.opensymphony.xwork2.ActionContext;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.Result;
 
-import java.util.Map;
+import com.opensymphony.xwork2.ModelDriven;
+
+import edu.aptech.vn.model.User;
 
 /**
  * @author BinhHC
  *
  */
-public class LoginAction extends BaseAction {
-	private String username;
-	private String password;
+@Namespace("/")
+public class LoginAction extends BaseAction implements ModelDriven {
+	/*protected String username;
+	protected String password;*/
+	protected User user = new User();
 	
 	public String execute() throws Exception {
 /*		Session ss = HibernateUtil.getSession().openSession();
@@ -33,45 +39,58 @@ public class LoginAction extends BaseAction {
 /*        Criteria criteria = ss.createCriteria(Feedback.class);
         criteria.setProjection(Projections.avg("rating"));
         System.out.println(criteria.uniqueResult());*/
-        
-		if ("admin".equals(username) && "passw0rd".equals(password)) {
+        /*
+		if ("admin".equals(user.getUsername()) && "passw0rd".equals(user.getPassword())) {
 			Map session = ActionContext.getContext().getSession();
 			session.put("admin", "true");
 			
 			return SUCCESS;
-		}
-		return ERROR;
+		}*/
+		return SUCCESS;
 	}
 	
+	@Action(value = "login", results={
+            @Result(name="success", location="login.jsp")
+    })
+	public String login() throws Exception {
+		
+		return SUCCESS;
+	}
+	
+	@Action(value = "dologin", results={
+            @Result(name="success", type="redirect", location="index")
+    })
+	public String doLogin() {
+		
+		return SUCCESS;
+	}
+	
+	@Action(value = "logout", results={
+            @Result(name="success", type="redirect", location="index")
+    })
 	public String logOut() throws Exception {
-		  Map session = ActionContext.getContext().getSession();
-		  session.remove("admin");
-		  return SUCCESS;
+		 
+		return SUCCESS;
 	}
 	
-	/**
-	 * @return the username
-	 */
-	public String getUsername() {
-		return username;
+	@Override
+	public Object getModel() {
+		// TODO Auto-generated method stub
+		return user;
 	}
+
 	/**
-	 * @param username the username to set
+	 * @param user the user to set
 	 */
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUser(User user) {
+		this.user = user;
 	}
+
 	/**
-	 * @return the password
+	 * @return the user
 	 */
-	public String getPassword() {
-		return password;
-	}
-	/**
-	 * @param password the password to set
-	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public User getUser() {
+		return user;
 	}
 	
 }
