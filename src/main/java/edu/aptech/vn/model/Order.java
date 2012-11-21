@@ -3,7 +3,9 @@ package edu.aptech.vn.model;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * User: LongDH
@@ -13,7 +15,16 @@ import java.util.List;
 @Entity
 @Table(name = "`order`")
 public class Order extends BaseModel {
-    private Integer id;
+	public static final Map<Integer, String> STATUS = new HashMap<Integer, String>();
+
+	static {
+		STATUS.put(0, "pending");
+		STATUS.put(1, "processed");
+		STATUS.put(2, "shipped");
+		STATUS.put(3, "cancelled");
+	}
+
+	private Integer id;
 
     @javax.persistence.Column(name = "id")
     @Id
@@ -74,7 +85,7 @@ public class Order extends BaseModel {
         this.phone = phone;
     }
 
-    private Integer status;
+    private Integer status = 0;
 
     @javax.persistence.Column(name = "status")
     @Basic

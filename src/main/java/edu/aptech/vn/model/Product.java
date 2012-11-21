@@ -3,7 +3,9 @@ package edu.aptech.vn.model;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * User: LongDH
@@ -12,6 +14,13 @@ import java.util.List;
  */
 @Entity
 public class Product extends BaseModel {
+	public static final Map<Integer, String> STATUS = new HashMap<Integer, String>();
+
+	static {
+		STATUS.put(0, "inactive");
+		STATUS.put(1, "active");
+	}
+
     private Integer id;
 
     @javax.persistence.Column(name = "id")
@@ -61,7 +70,7 @@ public class Product extends BaseModel {
         this.price = price;
     }
 
-    private Integer status;
+    private Integer status = 1;
 
     @javax.persistence.Column(name = "status")
     @Basic

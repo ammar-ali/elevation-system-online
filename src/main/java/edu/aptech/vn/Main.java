@@ -1,6 +1,6 @@
 package edu.aptech.vn;
 
-import edu.aptech.vn.model.*;
+import edu.aptech.vn.model.Order;
 import edu.aptech.vn.utils.HibernateUtil;
 import org.hibernate.Session;
 
@@ -34,27 +34,29 @@ public class Main {
 //        System.out.println(us.getUsername());
 //        System.out.println(us.getCountry().getName());
 
-        Order order = new Order();
-        order.setUser((User) session.get(User.class, 1));
-        order.setPayment((Payment) session.get(Payment.class, 1));
-        order.setCountry((Country) session.get(Country.class, 1));
+//        Order order = new Order();
+//        order.setUser((User) session.get(User.class, 1));
+//        order.setPayment((Payment) session.get(Payment.class, 1));
+//        order.setCountry((Country) session.get(Country.class, 1));
+//
+//        OrderProduct orderProduct1 = new OrderProduct();
+//        orderProduct1.setOrder(order);
+//        orderProduct1.setProduct((Product) session.get(Product.class, 1));
+//        orderProduct1.setQuantity(1);
+//        orderProduct1.setPrice(Float.parseFloat("100.5"));
+//        order.getOrderProducts().add(orderProduct1);
+//
+//        OrderProduct orderProduct2 = new OrderProduct();
+//        orderProduct2.setOrder(order);
+//        orderProduct2.setProduct((Product) session.get(Product.class, 2));
+//        orderProduct2.setQuantity(2);
+//        orderProduct2.setPrice(Float.parseFloat("200.9"));
+//        order.getOrderProducts().add(orderProduct2);
+//
+//        session.beginTransaction();
+//        System.out.println(session.save(order));
+//        session.getTransaction().commit();
 
-        OrderProduct orderProduct1 = new OrderProduct();
-        orderProduct1.setOrder(order);
-        orderProduct1.setProduct((Product) session.get(Product.class, 1));
-        orderProduct1.setQuantity(1);
-        orderProduct1.setPrice(Float.parseFloat("100.5"));
-        order.getOrderProducts().add(orderProduct1);
-
-        OrderProduct orderProduct2 = new OrderProduct();
-        orderProduct2.setOrder(order);
-        orderProduct2.setProduct((Product) session.get(Product.class, 2));
-        orderProduct2.setQuantity(2);
-        orderProduct2.setPrice(Float.parseFloat("200.9"));
-        order.getOrderProducts().add(orderProduct2);
-
-        session.beginTransaction();
-        System.out.println(session.save(order));
-        session.getTransaction().commit();
+		System.out.println(Order.STATUS.get(((Order) session.get(Order.class, 1)).getStatus()));
 	}
 }
