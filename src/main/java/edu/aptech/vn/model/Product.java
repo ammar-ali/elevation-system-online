@@ -21,6 +21,19 @@ public class Product extends BaseModel {
 		STATUS.put(1, "active");
 	}
 
+    @Transient
+    public String getImage() {
+        return "/uploads/no_image.gif";
+    }
+
+    @Transient
+    public String getExcerpt() {
+        if (getDescription().length() > 300) {
+            return getDescription().substring(0, 300) + "...";
+        }
+        return getDescription();
+    }
+
     private Integer id;
 
     @javax.persistence.Column(name = "id")
@@ -142,16 +155,5 @@ public class Product extends BaseModel {
 
     public void setOrderProducts(List<OrderProduct> orderProducts) {
         this.orderProducts = orderProducts;
-    }
-
-    private List<ProductImage> images;
-
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    public List<ProductImage> getImages() {
-        return images;
-    }
-
-    public void setImages(List<ProductImage> images) {
-        this.images = images;
     }
 }

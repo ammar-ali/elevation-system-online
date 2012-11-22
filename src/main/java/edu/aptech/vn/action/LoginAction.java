@@ -56,12 +56,12 @@ public class LoginAction extends BaseAction implements ModelDriven {
 		
 		return SUCCESS;
 	}
-	
+
 	@Action(value = "dologin", results={
             @Result(name="success", type="redirect", location="index")
     })
 	public String doLogin() {
-		
+
 		return SUCCESS;
 	}
 	
@@ -70,6 +70,14 @@ public class LoginAction extends BaseAction implements ModelDriven {
     })
 	public String logOut() throws Exception {
 		 
+		return SUCCESS;
+	}
+
+	@Action(value = "register", results={
+            @Result(name="success", location="register.jsp")
+    })
+	public String register() throws Exception {
+
 		return SUCCESS;
 	}
 	

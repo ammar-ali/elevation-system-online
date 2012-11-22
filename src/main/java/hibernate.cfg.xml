@@ -20,6 +20,5 @@
         <mapping class="edu.aptech.vn.model.Project"/>
         <mapping class="edu.aptech.vn.model.User"/>
         <mapping class="edu.aptech.vn.model.OrderProduct"/>
-        <mapping class="edu.aptech.vn.model.ProductImage"/>
     </session-factory>
 </hibernate-configuration>

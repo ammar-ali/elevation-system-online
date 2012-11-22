@@ -61,7 +61,7 @@ a, input {
 }
 
 a:hover {
-    color: #f2498f
+    color: black
 }
 
 .ta-left {
@@ -147,7 +147,6 @@ hr {
 
 body {
     background-color: #cef;
-    background-image: url('../images/texture1.png');
     padding: 40px 0;
     color: #4c4c4c;
     font: 12px/20px Arial
@@ -560,15 +559,24 @@ header #search .button-search:hover {
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     margin: 0 20px 30px;
-    background: #f2498f url('../images/gradient.png') left top;
+    background: #4D4D4D;
     display: block
 }
 
 .nav>ul>li {
     float: left;
     position: relative;
-    background: #f2498f url('../images/gradient.png');
+    background: #4D4D4D;
     font: 18px/40px 'PT Sans Narrow'
+}
+
+.nav>ul>li:hover {
+    background: black;
+    transition: all 1s;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -o-transition: all 1s;
+    -ms-transition: all 1s;
 }
 
 .nav>ul>li>a {
@@ -679,6 +687,10 @@ header #search .button-search:hover {
     margin-bottom: -1px;
     line-height: 32px;
     padding: 0 14px
+}
+
+.price {
+    color: #e51739
 }
 
 .rows {
@@ -795,7 +807,7 @@ header #search .button-search:hover {
 }
 
 .grid .struct {
-    width: 212px;
+    width: 209px;
     padding: 4px;
     margin: 0 10px 20px;
     background-color: #fafafa
@@ -1076,7 +1088,6 @@ aside .grid .struct img {
 }
 
 footer {
-    border-top: 1px solid #e5e5e5;
     padding: 20px 10px;
     font: 12px/18px Arial;
     color: #444;
@@ -1113,7 +1124,7 @@ footer h2 {
 }
 
 .button {
-    cursor: default;
+    cursor: pointer;
     border-radius: 2px;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
@@ -1139,7 +1150,6 @@ footer h2 {
 }
 
 .button-alt, .button:hover {
-    color: #fff;
     text-shadow: 0 1px rgba(0, 0, 0, .1)
 }
 
@@ -1499,6 +1509,7 @@ footer h2 {
 }
 
 .product-description {
+    clear: both;
     margin: 0 20px 40px
 }
 
@@ -1744,7 +1755,7 @@ footer h2 {
     }
 
     .grid .struct {
-        width: 152px;
+        width: 151px;
         padding: 3px;
         text-align: center
     }
@@ -1941,7 +1952,7 @@ footer h2 {
 
     .grid .wrap {
         vertical-align: top;
-        width: 50%;
+        width: 49%;
         display: inline-block
     }
 
@@ -2150,4 +2161,26 @@ footer h2 {
     .product-info .price-default, .product-info .price-new {
         font-size: 22px
     }
+}
+
+.errors {
+    color: #CC0000;
+    background-color:#FFCCCC;
+    border:1px solid #CC0000;
+    margin-bottom:8px;
+    padding: 10px;
+}
+.errors li{
+    list-style: none;
+}
+
+.messages {
+    color: #009900;
+    background-color:#DDFFDD;
+    border:1px solid #009900;
+    margin-bottom:8px;
+    padding: 10px;
+}
+.messages li{
+    list-style: none;
 }
