@@ -15,10 +15,13 @@ import java.util.Map;
 @Entity
 public class User extends BaseModel {
 	public static final Map<Integer, String> STATUS = new HashMap<Integer, String>();
+	public static final Map<Integer, String> TYPE = new HashMap<Integer, String>();
 
 	static {
 		STATUS.put(0, "inactive");
 		STATUS.put(1, "active");
+        TYPE.put(0, "user");
+        TYPE.put(1, "admin");
 	}
 
 	private Integer id;
