@@ -47,6 +47,7 @@ public class UserAction extends BaseAction implements ModelDriven {
 	public String addAction() {
 		try {
 			db.beginTransaction();
+			user.setPassword(md5(user.getPassword()));
 			db.save(user);
 			db.getTransaction().commit();
 			return SUCCESS;

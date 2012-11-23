@@ -19,17 +19,17 @@
                 <section class="order-list">
                     <h2>Orders</h2>
                     <ul>
-                        <s:iterator value="#session.user.orders" var="o">
+                        <s:iterator value="orders">
                             <li>
                                 <div>
                                     <strong>Order ID:</strong> #<s:property value="id"/><br>
                                     <strong>Date Added:</strong> <s:property value="created"/><br>
-                                    <strong>Products:</strong> <s:property value="#o.productCount"/>
+                                    <strong>Products:</strong> <s:property value="productCount"/>
                                 </div>
                                 <div>
-                                    <strong>Status:</strong> <s:property value="#o.statusText"/><br>
+                                    <strong>Status:</strong> <s:property value="statusText"/><br>
                                     <strong>Customer:</strong> <s:property value="name"/><br>
-                                    <strong>Total:</strong> $<s:property value="#o.orderTotal"/>
+                                    <strong>Total:</strong> $<s:property value="orderTotal"/>
                                 </div>
                                 <div>
                                     <a href="/account/order?id=<s:property value="id"/> ">View</a><br>

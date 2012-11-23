@@ -5,6 +5,7 @@ package edu.aptech.vn.action;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
+import edu.aptech.vn.model.Order;
 import edu.aptech.vn.model.User;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -25,7 +26,13 @@ public class AccountAction extends BaseAction implements ModelDriven {
         @Result(name="error", location="login.jsp")
     })
 	public String execute() throws Exception {
-        return AccountAction.isLogged() ? SUCCESS : ERROR;
+        if (AccountAction.isLogged()) {
+            Criteria criteria = db.createCriteria(Order.class);
+            criteria.add(Restrictions.eq("user_id", ((User) getSession().get("user")).getId()));
+            orders = criteria.list();
+            return SUCCESS;
+        }
+        return ERROR;
     }
 
     @Action(value = "login", results={
@@ -59,5 +66,13 @@ public class AccountAction extends BaseAction implements ModelDriven {
 
     public static boolean isLogged() {
         return ActionContext.getContext().getSession().get("user") != null;
+    }
+
+    public List getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List orders) {
+        this.orders = orders;
     }
 }
