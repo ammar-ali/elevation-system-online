@@ -27,8 +27,11 @@ public class UserAction extends BaseAction implements ModelDriven {
 	private List<Country> countries = new ArrayList<Country>();
 	private List<User> users = new ArrayList<User>();
     private User user = new User();
-	@Action(value = "list", results = { @Result(name = "success", location = "list.jsp") })
-	public String list() {
+
+    @Action(value = "index", results={
+            @Result(name="success", location="list.jsp")
+    })
+	public String execute() throws Exception {
 		try {
 			users = db.createQuery("from User").list();
 		} catch (Exception e) {
@@ -43,7 +46,7 @@ public class UserAction extends BaseAction implements ModelDriven {
 		return SUCCESS;
 	}
 
-	@Action(value = "doadd", results = { @Result(name = "success", type = "redirect", location = "list") })
+	@Action(value = "doadd", results = { @Result(name = "success", type = "redirect", location = "index") })
 	public String addAction() {
 		try {
 			db.beginTransaction();
