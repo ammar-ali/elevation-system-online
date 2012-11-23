@@ -6,7 +6,7 @@
 <jsp:include page="/admin/loginCheck.jsp" />
 admin login success
 <br/>
-<a href="<%= request.getContextPath() %>/admin/logout">Logout</a>
+
 
 
 <jsp:include page="/admin/footer.jsp" />
