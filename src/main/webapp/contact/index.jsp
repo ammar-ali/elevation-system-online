@@ -26,10 +26,10 @@
                         </s:if>
 
                         <form action="/contact/add" method="POST">
-                            <div class="field"><label>First Name:</label><input type="text" name="name"></div>
-                            <div class="field"><label>E-Mail Address:</label><input type="text" name="email"></div>
+                            <div class="field"><label>Name</label><input type="text" name="name"></div>
+                            <div class="field"><label>E-Mail</label><input type="text" name="email"></div>
                             <div class="field">
-                                <label>Rating:</label>
+                                <label>Rating</label>
                                 <select name="rating">
                                     <option value="10">10</option>
                                     <option value="9">9</option>
@@ -43,8 +43,8 @@
                                     <option value="1">1</option>
                                 </select>
                             </div>
-                            <div class="field"><label>Description:</label><textarea rows="8" style="width: 80%" name="description"></textarea></div>
-                            <div class="field"><input type="submit" value="Submit" class="button" style="border: none;"></div>
+                            <div class="field"><label>Description</label><textarea rows="8" style="width: 80%" name="description"></textarea></div>
+                            <div class="field"><input type="submit" value="Submit" class="button"></div>
                         </form>
                     </div>
                 </section>

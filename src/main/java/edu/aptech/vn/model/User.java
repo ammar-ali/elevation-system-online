@@ -73,6 +73,18 @@ public class User extends BaseModel {
         this.password = password;
     }
 
+    private String name;
+
+    @javax.persistence.Column(name = "name")
+    @Basic
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     private String address;
 
     @javax.persistence.Column(name = "address")

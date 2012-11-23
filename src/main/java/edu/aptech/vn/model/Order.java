@@ -24,6 +24,32 @@ public class Order extends BaseModel {
 		STATUS.put(3, "cancelled");
 	}
 
+    private String statusText;
+
+    @Transient
+    public String getStatusText() {
+        return Order.STATUS.get(getStatus());
+    }
+
+    private String productCount;
+
+    @Transient
+    public int getProductCount() {
+        return getProducts().size();
+    }
+
+    private float orderTotal;
+
+    @Transient
+    public float getOrderTotal() {
+        if (orderTotal == 0) {
+            for (OrderProduct p : getOrderProducts()) {
+                orderTotal += p.getPrice() * p.getQuantity();
+            }
+        }
+        return orderTotal;
+    }
+
 	private Integer id;
 
     @javax.persistence.Column(name = "id")

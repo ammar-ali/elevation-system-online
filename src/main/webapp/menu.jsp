@@ -1,3 +1,6 @@
+<%@ page import="edu.aptech.vn.action.AccountAction" %>
+<%@ page import="edu.aptech.vn.model.User" %>
+<%@ page import="com.opensymphony.xwork2.ActionContext" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <div class="pivot">
 <header>
@@ -7,8 +10,11 @@
                         <span class="button-search"></span>
                     </span>
     <br>
-    <span id="welcome">Welcome visitor you can <a href="/login/">login</a> or <a href="/register/">create an
-        account</a>.</span>
+    <% if (!AccountAction.isLogged()) { %>
+    <span id="welcome">Welcome visitor you can <a href="/account/">login</a> or <a href="/account/">create an account</a>.</span>
+    <% } else { %>
+    <span id="welcome">Welcome <s:property value="#session.user.name"/> you can go to <a href="/account/">your account</a> or <a href="/account/logout">logout</a>.</span>
+    <% } %>
 
     <div id="cart" class="item">
         <div class="cart-total">
