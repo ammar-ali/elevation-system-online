@@ -56,19 +56,26 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
         return session;
     }
 
+	public Object setSession(String key, Object value) {
+		return session.put(key, value);
+	}
+
+	public Object getSession(String param) {
+		return session.get(param);
+	}
+
     @Override
     public void setParameters(Map<String, String[]> params) {
         this.params = params;
     }
 
     public String getParam(String param) {
-        return ((String[])params.get(param))[0];
+        return params.get(param)[0];
     }
 
     public String md5(String s) {
-        MessageDigest m = null;
         try {
-            m = MessageDigest.getInstance("MD5");
+			MessageDigest m = MessageDigest.getInstance("MD5");
             m.reset();
             m.update(s.getBytes());
             byte[] digest = m.digest();

@@ -48,6 +48,7 @@ public class UserAction extends BaseAction implements ModelDriven {
 		try {
 			db.beginTransaction();
 			user.setPassword(md5(user.getPassword()));
+			user.setCountry((Country) db.get(Country.class, Integer.parseInt(getParam("country_id"))));
 			db.save(user);
 			db.getTransaction().commit();
 			return SUCCESS;
