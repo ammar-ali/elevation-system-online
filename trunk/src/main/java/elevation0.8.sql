@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 22, 2012 at 08:40 AM
+-- Generation Time: Nov 23, 2012 at 12:01 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -322,7 +322,7 @@ CREATE TABLE IF NOT EXISTS `feedback` (
   `rating` int(11) NOT NULL DEFAULT '10',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `feedback`
@@ -333,7 +333,8 @@ INSERT INTO `feedback` (`id`, `name`, `email`, `description`, `rating`, `created
 (3, 'asd gsg', 'a@bfd.com', 'asd  fd hdfhngn fn34 y4ehrjtr', 10, '2012-11-19 05:33:39'),
 (4, '123asd gsg', '5435a@bfd.com', ' 64564asd  fd hdfhngn fn34 y4ehrjtr', 7, '2012-11-19 05:34:32'),
 (5, 'Long', 'hunglong@dynabyte.vn', '34', 5, '2012-11-19 10:10:20'),
-(6, '235 3yrtjhrj ', '5435a@bfd.com', '  fdhfgj hjk jk tykjty', 9, '2012-11-20 10:29:44');
+(6, '235 3yrtjhrj ', '5435a@bfd.com', '  fdhfgj hjk jk tykjty', 9, '2012-11-20 10:29:44'),
+(8, 'Long prao ', 'a@b.com', 'bbbbbbbbbbb', 10, '2012-11-23 08:55:48');
 
 -- --------------------------------------------------------
 
@@ -357,7 +358,7 @@ CREATE TABLE IF NOT EXISTS `order` (
   KEY `user_id` (`user_id`),
   KEY `payment_id` (`payment_id`),
   KEY `country_id` (`country_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `order`
@@ -405,7 +406,7 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `name` varchar(255) NOT NULL,
   `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `payment`
@@ -431,15 +432,17 @@ CREATE TABLE IF NOT EXISTS `product` (
   `status` int(11) NOT NULL DEFAULT '1',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`id`, `name`, `description`, `price`, `status`, `created`) VALUES
-(1, 'Product 1', NULL, NULL, 1, '2012-11-20 09:18:56'),
-(2, 'Product 2', NULL, NULL, 1, '2012-11-20 09:19:00');
+(1, 'Product 1', 'This is a desc', 1000, 1, '2012-11-20 09:18:56'),
+(2, 'Product 2', 'Not a description', 600, 1, '2012-11-20 09:19:00'),
+(3, 'P 3', 'Test product', 800, 1, '2012-11-22 07:45:55'),
+(5, '4 product', 'Ho hoa hah a hgsg ', 900, 1, '2012-11-22 07:46:42');
 
 -- --------------------------------------------------------
 
@@ -469,6 +472,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `username` varchar(63) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(32) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
   `city` varchar(255) DEFAULT NULL,
   `country_id` int(11) DEFAULT NULL,
@@ -487,8 +491,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `address`, `city`, `country_id`, `phone`, `company`, `type`, `status`, `created`) VALUES
-(1, 'longpro', 'a@b.com', '123', NULL, NULL, 1, NULL, NULL, 0, 0, '2012-11-20 08:48:36');
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `name`, `address`, `city`, `country_id`, `phone`, `company`, `type`, `status`, `created`) VALUES
+(1, 'longpro', 'a@b.com', '202cb962ac59075b964b07152d234b70', 'Long', 'asd 123', NULL, 1, NULL, NULL, 0, 0, '2012-11-20 08:48:36');
 
 --
 -- Constraints for dumped tables

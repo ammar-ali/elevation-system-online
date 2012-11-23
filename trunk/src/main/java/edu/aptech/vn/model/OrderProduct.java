@@ -115,6 +115,19 @@ public class OrderProduct {
             this.product = product;
         }
 
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            OrderProductId that = (OrderProductId) o;
+
+            if (order != null ? !order.equals(that.order) : that.order != null) return false;
+            if (product != null ? !product.equals(that.product) : that.product != null)
+                return false;
+
+            return true;
+        }
+
         public int hashCode() {
             int result;
             result = (order != null ? order.hashCode() : 0);
