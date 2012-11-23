@@ -9,6 +9,8 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 
+import com.opensymphony.xwork2.ModelDriven;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +19,11 @@ import java.util.List;
  * 
  */
 @Namespace("/admin/user")
-public class UserAction extends BaseAction {
+public class UserAction extends BaseAction implements ModelDriven {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3255656035736585211L;
 	private List<Country> countries = new ArrayList<Country>();
 	private List<User> users = new ArrayList<User>();
     private User user = new User();
@@ -79,4 +85,11 @@ public class UserAction extends BaseAction {
     public void setUser(User user) {
         this.user = user;
     }
+
+	@Override
+	public Object getModel() {
+		// TODO Auto-generated method stub
+		return user;
+	}
+
 }

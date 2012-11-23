@@ -71,18 +71,18 @@
 			<tr>
 				<th valign="top">Country:</th>
 				<td>
-				<s:select id="country_id"
+				<%-- <s:select id="country_id"
 				       name="country_id"
 				       list="countries"
 				       listKey="id"
 				       listValue="name"
 				       value="%{countries.{id}}"
-				/>
-				<%-- <select name="country_id"  class="styledselect_form_1">
+				/> --%>
+				<select name="country_id"  class="styledselect_form_1">
 					<s:iterator value="countries">
 					<option value="<s:property value="id"/>"><s:property value="name"/></option>
 					</s:iterator>
-				</select> --%>
+				</select>
 				</td>
 				<td></td>
 			</tr>
