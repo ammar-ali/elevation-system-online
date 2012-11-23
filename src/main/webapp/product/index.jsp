@@ -48,15 +48,15 @@
                     </div>
                 </s:iterator>
             </section>
-            <div class="pagination">
-                <div class="links">
-                    <b>1</b>
-                    <a href="default.htm">2</a>
-                    <a href="default.htm">3</a>
-                    <a href="default.htm">></a>
-                </div>
-                <div class="result">Showing 1 to 5 of 12 (3 Pages)</div>
-            </div>
+            <%--<div class="pagination">--%>
+                <%--<div class="links">--%>
+                    <%--<b>1</b>--%>
+                    <%--<a href="default.htm">2</a>--%>
+                    <%--<a href="default.htm">3</a>--%>
+                    <%--<a href="default.htm">></a>--%>
+                <%--</div>--%>
+                <%--<div class="result">Showing 1 to 5 of 12 (3 Pages)</div>--%>
+            <%--</div>--%>
         </div>
     </div>
 </div>
