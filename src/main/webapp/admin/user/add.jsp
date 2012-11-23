@@ -59,6 +59,11 @@
 				<td></td>
 			</tr>
 			<tr>
+				<th valign="top">Name:</th>
+				<td><input type="text" name="name" class="inp-form" /></td>
+				<td></td>
+			</tr>
+			<tr>
 				<th valign="top">Address:</th>
 				<td><input type="text" name="address" class="inp-form" /></td>
 				<td></td>

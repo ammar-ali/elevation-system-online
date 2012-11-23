@@ -24,14 +24,10 @@ public class Order extends BaseModel {
 		STATUS.put(3, "cancelled");
 	}
 
-    private String statusText;
-
     @Transient
     public String getStatusText() {
         return Order.STATUS.get(getStatus());
     }
-
-    private String productCount;
 
     @Transient
     public int getProductCount() {
@@ -61,6 +57,18 @@ public class Order extends BaseModel {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    private int user_id;
+
+    @javax.persistence.Column(name = "user_id", updatable = false, insertable = false)
+    @Basic
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     private String name;
