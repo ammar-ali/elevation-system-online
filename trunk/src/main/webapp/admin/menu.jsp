@@ -12,7 +12,7 @@
 				alt="" />
 		</div>
 		<div class="nav-divider">&nbsp;</div>
-		<a href="" id="logout"><img src="<%=request.getContextPath()%>/admin/images/shared/nav/nav_logout.gif"
+		<a href="<%= request.getContextPath() %>/admin/logout" id="logout"><img src="<%=request.getContextPath()%>/admin/images/shared/nav/nav_logout.gif"
 			width="64" height="14" alt="" />
 		</a>
 		<div class="clear">&nbsp;</div>
