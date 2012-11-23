@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="/css/markup.css">
     <link rel="stylesheet" type="text/css" href="/css/flexslider.css">
     <link rel="stylesheet" type="text/css" href="/css/elastislide.css">
-    <link rel="stylesheet" type="text/css" href="/css/colorbox.css">
+    <%--<link rel="stylesheet" type="text/css" href="/css/colorbox.css">--%>
 
     <!--[if lte IE 8]>
     <link rel="stylesheet" type="text/css" href="/css/ie8.css">
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="/js/respond.min.js"></script>
     <script type="text/javascript" src="/js/jquery.flexslider-min.js"></script>
     <script type="text/javascript" src="/js/jquery.elastislide.js"></script>
-    <script type="text/javascript" src="/js/jquery.colorbox-min.js"></script>
+    <%--<script type="text/javascript" src="/js/jquery.colorbox-min.js"></script>--%>
     <script type="text/javascript" src="/js/tabs.js"></script>
     <script type="text/javascript" src="/js/main.js"></script>
 </head>

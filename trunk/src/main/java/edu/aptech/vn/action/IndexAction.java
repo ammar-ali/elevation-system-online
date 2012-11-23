@@ -22,7 +22,7 @@ public class IndexAction extends BaseAction {
     private List featuredProducts;
 
     @Action(value = "index", results={
-        @Result(name="success", location="index.jsp")
+            @Result(name="success", location="index.jsp")
     })
 	public String execute() throws Exception {
         setTitle("Home");
