@@ -45,7 +45,7 @@ public class AccountAction extends BaseAction implements ModelDriven {
         criteria.add(Restrictions.eq("password", md5(getParam("password"))));
         User u = (User) criteria.uniqueResult();
         if (u != null) {
-            getSession().put("user",u);
+            setSession("user", u);
             return SUCCESS;
         }
         return ERROR;
@@ -55,7 +55,7 @@ public class AccountAction extends BaseAction implements ModelDriven {
         @Result(name="success", location="/", type = "redirect")
     })
 	public String logout() throws Exception {
-        getSession().put("user", null);
+        setSession("user", null);
         return SUCCESS;
     }
 
