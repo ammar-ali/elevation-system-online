@@ -24,9 +24,9 @@ import java.util.Map;
     @Result(name="error", location="/error.jsp")
 })
 public abstract class BaseAction extends ActionSupport implements SessionAware, ParameterAware {
-    private int id;
-    private Map<String, Object> session = new HashMap<String, Object>();
-    private Map<String, String[]> params = new HashMap<String, String[]>();
+	protected int id;
+    protected Map<String, Object> session = new HashMap<String, Object>();
+    protected Map<String, String[]> params = new HashMap<String, String[]>();
     protected final Session db = HibernateUtil.getSession().openSession();
 
     protected String title = getClass().getName().substring(getClass().getName().lastIndexOf(".") + 1, getClass().getName().indexOf("Action"));
