@@ -15,11 +15,9 @@ import com.opensymphony.xwork2.ActionContext;
  */
 @Namespace("/admin")
 public class IndexAction extends edu.aptech.vn.action.IndexAction {
-	@Action(value = "index", results = { @Result(name = "success", location = "index.jsp") })
+	@Action(value = "index", results = { @Result(name = "success", type="redirect", location = "user/") })
 	public String execute() throws Exception {
-		ActionContext.getContext().getParameters().put("a", "aaa");
-		ActionContext.getContext().getSession().put("b", "bbb");
-		getSession().put("a", "asdd");
+		
 		return SUCCESS;
 	}
 
