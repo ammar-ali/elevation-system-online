@@ -63,17 +63,31 @@ public class AccountAction extends BaseAction implements ModelDriven {
         @Result(name="error", location="login.jsp")
     })
 	public String login() throws Exception {
-        Criteria criteria = db.createCriteria(User.class);
-        criteria.add(Restrictions.eq("username", getParam("username")));
-        criteria.add(Restrictions.eq("password", md5(getParam("password"))));
-        User u = (User) criteria.uniqueResult();
-        if (u != null) {
-            setSession("user", u);
-            return SUCCESS;
-        }
+		if (getParam("register") != null) {
+			try {
+				db.beginTransaction();
+				user.setPassword(md5(user.getPassword()));
+				int id = new Integer(db.save(user).toString());
+				db.getTransaction().commit();
+				setSession("user", db.get(User.class, id));
+				return SUCCESS;
+			} catch (Exception e) {
+				addActionError("Error: " + e.getMessage());
+				return ERROR;
+			}
+		}
+
+		Criteria criteria = db.createCriteria(User.class);
+		criteria.add(Restrictions.eq("username", getParam("username")));
+		criteria.add(Restrictions.eq("password", md5(getParam("password"))));
+		User u = (User) criteria.uniqueResult();
+		if (u != null) {
+			setSession("user", u);
+			return SUCCESS;
+		}
 		addActionError("Wrong username or password");
-        return ERROR;
-    }
+		return ERROR;
+	}
 
     @Action(value = "logout", results={
         @Result(name="success", location="/", type = "redirect")

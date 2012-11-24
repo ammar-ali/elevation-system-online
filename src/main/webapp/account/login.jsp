@@ -24,7 +24,32 @@
                     <div class="content">
                         <h2>New Customer</h2>
                         <p><b>Register Account</b><br>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
-                        <a href="/account/register/" class="button">Continue</a>
+
+                        <div class="form-inline">
+                            <form action="/account/login" method="POST" id="login">
+                                <input type="hidden" name="register" value="1">
+
+                                <div class="field">
+                                    <label>Username:</label>
+                                    <input type="text" name="username" class="validate[required]" id="username0">
+                                </div>
+                                <div class="field">
+                                    <label>Password:</label>
+                                    <input type="password" name="password" class="validate[required]" id="password0">
+                                </div>
+                                <div class="field">
+                                    <label>Email:</label>
+                                    <input type="text" name="email" class="validate[required]" id="email">
+                                </div>
+                                <div class="field">
+                                    <label>Full name:</label>
+                                    <input type="text" name="name" class="validate[required]" id="fullname">
+                                </div>
+                                <div class="field">
+                                    <input type="submit" value="Continue" class="button">
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </section>
                 <section class="fluid50">
