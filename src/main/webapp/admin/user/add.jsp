@@ -50,7 +50,7 @@
 			</tr>
 			<tr>
 				<th valign="top">Password:</th>
-				<td><input type="text" name="password" class="inp-form" /></td>
+				<td><input type="password" name="password" class="inp-form" /></td>
 				<td></td>
 			</tr>
 			<tr>

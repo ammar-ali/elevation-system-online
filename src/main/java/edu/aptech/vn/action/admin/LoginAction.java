@@ -19,7 +19,7 @@ import edu.aptech.vn.model.User;
  */
 @Namespace("/admin")
 public class LoginAction extends edu.aptech.vn.action.LoginAction {
-
+	
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub

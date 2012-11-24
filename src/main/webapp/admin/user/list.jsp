@@ -49,11 +49,8 @@
 					<td><s:property value="city"/></td>
 					<td><s:property value="phone"/></td>
 					<td class="options-width">
-					<a href="" title="Edit" class="icon-1 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-2 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-3 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-4 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-5 info-tooltip"></a>
+					<a href="edit?id=<s:property value="id"/>" title="Edit" class="icon-1 info-tooltip"></a>
+					<a href="" title="Delete" class="icon-2 info-tooltip"></a>
 					</td>
 				</tr>
 				</s:iterator>
@@ -101,6 +98,5 @@
 		<th class="sized bottomright"></th>
 	</tr>
 	</table>
-
   
  <jsp:include page="/admin/footer.jsp" />
