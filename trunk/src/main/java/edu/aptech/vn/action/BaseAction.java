@@ -60,8 +60,8 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 		return session.put(key, value);
 	}
 
-	public Object getSession(String param) {
-		return session.get(param);
+	public Object getSession(String key) {
+		return session.get(key);
 	}
 
     @Override
@@ -69,8 +69,8 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
         this.params = params;
     }
 
-    public String getParam(String param) {
-        return params.get(param)[0];
+    public String getParam(String key) {
+        return params.get(key) != null && params.get(key).length > 0 ? params.get(key)[0] : null;
     }
 
     public String md5(String s) {
