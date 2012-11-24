@@ -12,6 +12,8 @@
     <link rel="stylesheet" type="text/css" href="/css/markup.css">
     <link rel="stylesheet" type="text/css" href="/css/flexslider.css">
     <link rel="stylesheet" type="text/css" href="/css/elastislide.css">
+    <link rel="stylesheet" type="text/css" href="/css/template.css">
+    <link rel="stylesheet" type="text/css" href="/css/validationEngine.jquery.css">
     <%--<link rel="stylesheet" type="text/css" href="/css/colorbox.css">--%>
 
     <!--[if lte IE 8]>
@@ -22,6 +24,8 @@
     <script type="text/javascript" src="/js/jquery-ui-1.9.1.custom.min.js"></script>
 
     <script type="text/javascript" src="/js/html5.js"></script>
+    <script type="text/javascript" src="/js/jquery.validationEngine-en.js"></script>
+    <script type="text/javascript" src="/js/jquery.validationEngine.js"></script>
     <script type="text/javascript" src="/js/respond.min.js"></script>
     <script type="text/javascript" src="/js/jquery.flexslider-min.js"></script>
     <script type="text/javascript" src="/js/jquery.elastislide.js"></script>

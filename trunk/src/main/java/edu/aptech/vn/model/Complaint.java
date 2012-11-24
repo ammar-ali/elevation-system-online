@@ -37,7 +37,7 @@ public class Complaint extends BaseModel {
 
     private Timestamp created;
 
-    @javax.persistence.Column(name = "created")
+    @javax.persistence.Column(name = "created", updatable = false)
     @Basic
     public Timestamp getCreated() {
         return created;

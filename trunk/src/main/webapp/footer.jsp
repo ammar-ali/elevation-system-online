@@ -18,14 +18,12 @@
             <h2>Extras</h2>
             <ul>
                 <li><a href="/product/">Products</a></li>
-                <li><a href="/project/">Projects</a></li>
             </ul>
         </div>
         <div class="column last">
-            <h2>My Account</h2>
+            <h2>User</h2>
             <ul>
                 <li><a href="/account/">My Account</a></li>
-                <li><a href="/account/orders/">Order History</a></li>
             </ul>
         </div>
     </footer>
