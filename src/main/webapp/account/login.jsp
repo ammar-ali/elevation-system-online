@@ -15,6 +15,11 @@
     <div class="pivot">
         <div id="content">
             <div id="content-center">
+                <s:if test="hasActionErrors()">
+                    <div class="errors">
+                        <s:actionerror/>
+                    </div>
+                </s:if>
                 <section class="fluid50">
                     <div class="content">
                         <h2>New Customer</h2>
@@ -26,15 +31,15 @@
                     <div class="content">
                         <h2>Returning Customer</h2>
                         <div class="form-inline">
-                            <form action="/account/login" method="POST">
+                            <form action="/account/login" method="POST" id="login">
                                 <p>I am a returning customer</p>
                                 <div class="field">
                                     <label>Username:</label>
-                                    <input type="text" name="username">
+                                    <input type="text" name="username" class="validate[required]" id="username">
                                 </div>
                                 <div class="field">
                                     <label>Password:</label>
-                                    <input type="password" name="password">
+                                    <input type="password" name="password" class="validate[required]" id="password">
                                 </div>
                                 <div class="field">
                                     <input type="submit" value="Continue" class="button">

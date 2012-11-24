@@ -13,7 +13,7 @@
     <% if (!AccountAction.isLogged()) { %>
     <span id="welcome">Welcome visitor you can <a href="/account/">login</a> or <a href="/account/">create an account</a>.</span>
     <% } else { %>
-    <span id="welcome">Welcome <s:property value="#session.user.name"/> you can go to <a href="/account/">your account</a> or <a href="/account/logout">logout</a>.</span>
+    <span id="welcome">Welcome <b><s:property value="#session.user.name"/></b> you can go to <a href="/account/">your account</a> or <a href="/account/logout">logout</a>.</span>
     <% } %>
 
     <div id="cart" class="item">
@@ -97,7 +97,6 @@
     <select>
         <option value="/">Home</option>
         <option value="/product/">Products</option>
-        <option value="/project/">Projects</option>
         <option value="/about/">About Us</option>
         <option value="/contact/">Contact</option>
         <option value="/account/">My Account</option>
@@ -110,9 +109,6 @@
         <li class="tftooltip" title="Home"><a href="/"><span class="icon"></span></a></li>
         <li>
             <a href="/product/">Products</a>
-        </li>
-        <li>
-            <a href="/project/">Projects</a>
         </li>
         <li>
             <a href="/about/">About Us</a>

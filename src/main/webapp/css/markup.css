@@ -2190,3 +2190,8 @@ footer h2 {
 input.button {
     border:none;
 }
+
+.account.form-inline .field {
+    width: 48%;
+    float: left;
+}

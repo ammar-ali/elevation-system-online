@@ -1,4 +1,5 @@
 (function($){
+
 	var tfToolTip = function(element, options){
 		var settings = $.extend({}, $.fn.tfToolTip.defaults, options);
 		var element = $(element);
@@ -50,6 +51,8 @@
 })(jQuery);
 
 $(document).ready(function(){
+    $('form').validationEngine();
+
 	$(document).click(function(){
 		$('.drop-content .drop-body').slideUp(200, function(){
 			$(this).parents('.drop-content').parent().find('.drop-content, .drop-arrow').hide();

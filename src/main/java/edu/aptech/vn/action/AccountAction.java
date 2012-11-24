@@ -5,6 +5,7 @@ package edu.aptech.vn.action;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
+import edu.aptech.vn.model.Country;
 import edu.aptech.vn.model.Order;
 import edu.aptech.vn.model.User;
 import org.apache.struts2.convention.annotation.Action;
@@ -19,7 +20,9 @@ import java.util.List;
 @Namespace("/account")
 public class AccountAction extends BaseAction implements ModelDriven {
     private User user = new User();
-    private List orders = new ArrayList();
+	private List countries = new ArrayList();
+	private List userOrders = new ArrayList();
+	private Order order = new Order();
 
     @Action(value = "index", results={
         @Result(name="success", location="index.jsp"),
@@ -27,9 +30,29 @@ public class AccountAction extends BaseAction implements ModelDriven {
     })
 	public String execute() throws Exception {
         if (AccountAction.isLogged()) {
-            Criteria criteria = db.createCriteria(Order.class);
-            criteria.add(Restrictions.eq("user_id", ((User) getSession().get("user")).getId()));
-            orders = criteria.list();
+			countries = db.createQuery("from Country").list();
+			Criteria criteria = db.createCriteria(Order.class);
+			criteria.add(Restrictions.eq("user_id", ((User) getSession("user")).getId()));
+			userOrders = criteria.list();
+			if (getParam("name") != null) {
+				try {
+					User u = (User) getSession("user");
+					db.beginTransaction();
+					if (getParam("password") != null && getParam("password").length() > 1) user.setPassword(md5(user.getPassword()));
+					else user.setPassword(u.getPassword());
+
+					user.setId(u.getId());
+					user.setUsername(u.getUsername());
+					user.setCountry((Country) db.get(Country.class, Integer.parseInt(getParam("country_id"))));
+					db.update(user);
+					db.getTransaction().commit();
+
+					setSession("user", db.get(User.class, u.getId()));
+					addActionMessage("Update successful");
+				} catch (Exception e) {
+					addActionError("Error: " + e.getMessage());
+				}
+			}
             return SUCCESS;
         }
         return ERROR;
@@ -48,6 +71,7 @@ public class AccountAction extends BaseAction implements ModelDriven {
             setSession("user", u);
             return SUCCESS;
         }
+		addActionError("Wrong username or password");
         return ERROR;
     }
 
@@ -59,6 +83,21 @@ public class AccountAction extends BaseAction implements ModelDriven {
         return SUCCESS;
     }
 
+    @Action(value = "order", results={
+        @Result(name="success", location="order.jsp")
+    })
+	public String order() throws Exception {
+		Criteria criteria = db.createCriteria(Order.class);
+		criteria.add(Restrictions.eq("id", getId()));
+		criteria.add(Restrictions.eq("user_id", ((User) getSession("user")).getId()));
+		System.out.println(getId());
+		order = (Order) criteria.uniqueResult();
+		if (order == null) {
+			addActionError("Order not found");
+		}
+		return SUCCESS;
+	}
+
     @Override
     public Object getModel() {
         return user;
@@ -68,11 +107,27 @@ public class AccountAction extends BaseAction implements ModelDriven {
         return ActionContext.getContext().getSession().get("user") != null;
     }
 
-    public List getOrders() {
-        return orders;
-    }
+	public List getCountries() {
+		return countries;
+	}
 
-    public void setOrders(List orders) {
-        this.orders = orders;
-    }
+	public void setCountries(List countries) {
+		this.countries = countries;
+	}
+
+	public List getUserOrders() {
+		return userOrders;
+	}
+
+	public void setUserOrders(List userOrders) {
+		this.userOrders = userOrders;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
 }

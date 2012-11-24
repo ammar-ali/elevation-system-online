@@ -1,6 +1,6 @@
 package edu.aptech.vn;
 
-import edu.aptech.vn.model.*;
+import edu.aptech.vn.model.User;
 import edu.aptech.vn.utils.HibernateUtil;
 import org.hibernate.Session;
 
@@ -57,6 +57,8 @@ public class Main {
 //        System.out.println(session.save(order));
 //        session.getTransaction().commit();
 
-		System.out.println(Order.STATUS.get(((Order) session.get(Order.class, 1)).getStatus()));
+//		System.out.println(Order.STATUS.get(((Order) session.get(Order.class, 1)).getStatus()));
+
+		System.out.println(((User) session.get(User.class, 1)).getUsername());
 	}
 }
