@@ -76,16 +76,11 @@
 			<tr>
 				<th valign="top">Country:</th>
 				<td>
-				<%-- <s:select id="country_id"
-				       name="country_id"
-				       list="countries"
-				       listKey="id"
-				       listValue="name"
-				       value="%{countries.{id}}"
-				/> --%>
 				<select name="country_id"  class="styledselect_form_1" >
-					<s:iterator value="countries" status="ctrySts">
-					<option value="<s:property value="id"/>"><s:property value="name"/></option>
+					<s:iterator value="countries" status="ctrySts" var="country">
+					<option value="<s:property value="id"/>" <s:if test="%{user.country.id==id}">
+				    selected
+				</s:if>><s:property value="name"/></option>
 					</s:iterator>
 				</select>
 				</td>
@@ -93,17 +88,32 @@
 			</tr>
 			<tr>
 				<th valign="top">Phone:</th>
-				<td><input type="text" name="phone" class="inp-form" /></td>
+				<td><input type="text" name="phone" value="<s:property value="user.phone"/>" class="inp-form" /></td>
 				<td></td>
 			</tr>
 			<tr>
 				<th valign="top">Company:</th>
-				<td><input type="text" name="company" class="inp-form" /></td>
+				<td><input type="text" name="company" value="<s:property value="user.city"/>" class="inp-form" /></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th valign="top">Type:</th>
+				<td>
+				<select name="type"  class="styledselect_form_1">
+				<option value="0" <s:if test="%{type==0}">
+				    selected
+				</s:if> >User</option>
+				<option value="1" <s:if test="%{type==1}">
+				    selected
+				</s:if>>Admin</option>
+				</select>
+				</td>
 				<td></td>
 			</tr>
 	<tr>
 		<th>&nbsp;</th>
 		<td valign="top">
+			<input type="hidden" name="type" value="<s:property value="user.type"/>" />
 			<input type="hidden" name="id" value="<s:property value="user.id"/>" />
 			<input type="submit" value="" class="form-submit" />
 			<input type="reset" value="" class="form-reset"  />

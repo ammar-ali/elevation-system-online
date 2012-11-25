@@ -6,7 +6,7 @@
 
 	<!--  start page-heading -->
 	<div id="page-heading">
-		<h1>List User</h1>
+		<h1>Deleted User</h1>
 	</div>
 	<!-- end page-heading -->
 

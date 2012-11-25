@@ -48,14 +48,15 @@
 			<ul class="select">
 				<li><a href="#nogo"><b>User</b>
 				</a>
-				</li>
-			</ul>
-
-			<div class="nav-divider">&nbsp;</div>
-			
-			<ul class="select">
-				<li><a href="#nogo"><b>Country</b>
-				</a>
+				<!--[if lte IE 6]><table><tr><td><![endif]-->
+				<div class="select_sub show">
+					<ul class="sub">
+						<li><a href="<%= request.getContextPath() %>/admin/user/index">List users</a></li>
+						<li class="sub_show"><a href="<%= request.getContextPath() %>/admin/user/add">Add user</a></li>
+						<li><a href="<%= request.getContextPath() %>/admin/user/deleted">View deleted</a></li>
+					</ul>
+				</div>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 				</li>
 			</ul>
 
@@ -64,6 +65,15 @@
 			<ul class="select">
 				<li><a href="#nogo"><b>Project</b>
 				</a>
+				<!--[if lte IE 6]><table><tr><td><![endif]-->
+				<div class="select_sub show">
+					<ul class="sub">
+						<li><a href="<%= request.getContextPath() %>/admin/project/index">List projects</a></li>
+						<li class="sub_show"><a href="<%= request.getContextPath() %>/admin/project/add">Add project</a></li>
+						<li><a href="<%= request.getContextPath() %>/admin/project/deleted">View deleted</a></li>
+					</ul>
+				</div>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 				</li>
 			</ul>
 
@@ -72,6 +82,15 @@
 			<ul class="select">
 				<li><a href="#nogo"><b>Product</b>
 				</a>
+				<!--[if lte IE 6]><table><tr><td><![endif]-->
+				<div class="select_sub show">
+					<ul class="sub">
+						<li><a href="<%= request.getContextPath() %>/admin/product/index">List products</a></li>
+						<li class="sub_show"><a href="<%= request.getContextPath() %>/admin/product/add">Add product</a></li>
+						<li><a href="<%= request.getContextPath() %>/admin/product/deleted">View deleted</a></li>
+					</ul>
+				</div>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 				</li>
 			</ul>
 
@@ -80,6 +99,14 @@
 			<ul class="select">
 				<li><a href="#nogo"><b>Order</b>
 				</a>
+				<!--[if lte IE 6]><table><tr><td><![endif]-->
+				<div class="select_sub show">
+					<ul class="sub">
+						<li><a href="<%= request.getContextPath() %>/admin/order/index">List orders</a></li>
+						
+					</ul>
+				</div>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 				</li>
 			</ul>
 
@@ -88,6 +115,14 @@
 			<ul class="select">
 				<li><a href="#nogo"><b>Feedback</b>
 				</a>
+				<!--[if lte IE 6]><table><tr><td><![endif]-->
+				<div class="select_sub show">
+					<ul class="sub">
+						<li><a href="<%= request.getContextPath() %>/admin/feedback/index">List feedbacks</a></li>
+						
+					</ul>
+				</div>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 				</li>
 			</ul>
 
