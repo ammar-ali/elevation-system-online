@@ -76,6 +76,10 @@ a:hover {
     text-align: center !important
 }
 
+.ta-center.product img {
+    width: 50px;
+}
+
 .va-top {
     vertical-align: top !important
 }
@@ -464,6 +468,10 @@ header #cart .cart-list .image a, header #cart .cart-list .image img {
     display: block
 }
 
+header #cart .cart-list .image img {
+    width: 50px;
+}
+
 header #cart .cart-list .image, header #cart .cart-list .remove {
     padding-right: 10px
 }
@@ -472,10 +480,11 @@ header #cart .cart-list .name, header #cart .cart-list .quantity, header #cart .
     padding-right: 20px
 }
 
-header #cart .cart-list .remove div {
+header #cart .cart-list .remove a {
+    display: block;
     width: 8px;
     height: 8px;
-    background: #ccc url('../images/delete.png');
+    background: red;
     cursor: pointer
 }
 

@@ -3,22 +3,13 @@
  */
 package edu.aptech.vn.action;
 
-import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ModelDriven;
-import edu.aptech.vn.model.User;
+import edu.aptech.vn.utils.ShoppingCart;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Namespace("/cart")
-public class CartAction extends BaseAction implements ModelDriven {
-    private User user = new User();
-    private List orders = new ArrayList();
+public class CartAction extends BaseAction {
 
     @Action(value = "index", results={
         @Result(name="success", location="index.jsp")
@@ -27,44 +18,26 @@ public class CartAction extends BaseAction implements ModelDriven {
         return SUCCESS;
     }
 
-    @Action(value = "login", results={
-        @Result(name="success", location="/account", type = "redirect"),
-        @Result(name="error", location="login.jsp")
+    @Action(value = "add", results={
+        @Result(name="success", location="/cart/", type = "redirect")
     })
-	public String login() throws Exception {
-        Criteria criteria = db.createCriteria(User.class);
-        criteria.add(Restrictions.eq("username", getParam("username")));
-        criteria.add(Restrictions.eq("password", md5(getParam("password"))));
-        User u = (User) criteria.uniqueResult();
-        if (u != null) {
-            setSession("user", u);
-            return SUCCESS;
-        }
-        return ERROR;
-    }
+	public String add() throws Exception {
+		getCart().add(Integer.parseInt(getParam("id")), Integer.parseInt(getParam("q")));
+		return SUCCESS;
+	}
 
-    @Action(value = "logout", results={
-        @Result(name="success", location="/", type = "redirect")
+    @Action(value = "remove", results={
+        @Result(name="success", location="/cart/", type = "redirect")
     })
-	public String logout() throws Exception {
-        setSession("user", null);
-        return SUCCESS;
-    }
+	public String remove() throws Exception {
+		getCart().remove(Integer.parseInt(getParam("id")));
+		return SUCCESS;
+	}
 
-    @Override
-    public Object getModel() {
-        return user;
-    }
-
-    public static boolean isLogged() {
-        return ActionContext.getContext().getSession().get("user") != null;
-    }
-
-    public List getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List orders) {
-        this.orders = orders;
-    }
+	private ShoppingCart getCart() {
+		if (getSession("cart") == null) {
+			setSession("cart", new ShoppingCart());
+		}
+		return (ShoppingCart) getSession("cart");
+	}
 }

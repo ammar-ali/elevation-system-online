@@ -29,24 +29,25 @@
 
                     <p>
                         <b>Order ID:</b> #<s:property value="order.id"/> <br>
-                        <b>Date Added:</b> 10/05/2012<br>
-                        <b>Payment Method:</b> Cash On Delivery<br>
-                        <b>Shipping Method:</b> Flat Shipping Rate<br><br>
+                        <b>Date Added:</b> <s:property value="order.created"/><br>
+                        <b>Payment Method:</b> <s:property value="order.payment.name"/><br>
                     </p>
 
                     <div class="fluid50">
-                        <h2>Payment Address</h2>
-                        Address 1<br>
-                        Ocenic 11s<br>
-                        Angus<br>
-                        United Kingdom
+                        <h2>Payment Info</h2>
+                        <s:property value="#session.user.name"/><br>
+                        <s:property value="#session.user.address"/><br>
+                        <s:property value="#session.user.phone"/><br>
+                        <s:property value="#session.user.city"/><br>
+                        <s:property value="#session.user.country.name"/><br>
                     </div>
                     <div class="fluid50">
-                        <h2>Shipping Address</h2>
-                        Address 1<br>
-                        Ocenic 11s<br>
-                        Angus<br>
-                        United Kingdom
+                        <h2>Shipping Info</h2>
+                        <s:property value="order.name"/><br>
+                        <s:property value="order.address"/><br>
+                        <s:property value="order.phone"/><br>
+                        <s:property value="order.city"/><br>
+                        <s:property value="order.country.name"/><br>
                     </div>
                     <div class="clear"></div>
 
@@ -55,74 +56,33 @@
                         <thead>
                         <tr>
                             <td class="ta-left">Product Name</td>
-                            <td class="ta-left hide-phone">Model</td>
                             <td class="ta-right">Quantity</td>
                             <td class="ta-right">Price</td>
                             <td class="ta-right">Total</td>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td class="ta-left">Product Name</td>
-                            <td class="ta-left hide-phone">product 1</td>
-                            <td class="ta-right">2</td>
-                            <td class="ta-right">$900.00</td>
-                            <td class="ta-right">$1800.00</td>
-                        </tr>
-                        <tr>
-                            <td class="ta-left">Product Name</td>
-                            <td class="ta-left hide-phone">product 2</td>
-                            <td class="ta-right">1</td>
-                            <td class="ta-right">$600.00</td>
-                            <td class="ta-right">$600.00</td>
-                        </tr>
-                        <tr>
-                            <td class="ta-left">Product Name</td>
-                            <td class="ta-left hide-phone">product 3</td>
-                            <td class="ta-right">1</td>
-                            <td class="ta-right">$800.00</td>
-                            <td class="ta-right">$800.00</td>
-                        </tr>
+                        <s:iterator value="order.orderProducts">
+                            <tr>
+                                <td class="ta-left"><s:property value="product.name"/></td>
+                                <td class="ta-right"><s:property value="quantity"/></td>
+                                <td class="ta-right"><s:property value="price"/></td>
+                                <td class="ta-right"><s:property value="quantity * price"/></td>
+                            </tr>
+                        </s:iterator>
                         </tbody>
                         <tfoot>
                         <tr>
                             <td colspan="5">
                                 <div class="float-right">
-                                    $3200.00<br>
-                                    $8.00<br>
-                                    $3208.00
+                                    $<s:property value="order.orderTotal"/>
                                 </div>
                                 <div class="float-right ta-right" style="padding-right: 10px; font-weight: bold;">
-                                    Sub-Total:<br>
-                                    Eco Tax (-2.00):<br>
                                     Total:
                                 </div>
                             </td>
                         </tr>
                         </tfoot>
-                    </table>
-
-                    <h2>Order History</h2>
-                    <table class="table" width="100%">
-                        <thead>
-                        <tr>
-                            <td class="ta-left" width="20%">Date Added</td>
-                            <td class="ta-left">Status</td>
-                            <td class="ta-left">Comment</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td class="ta-left va-top">11/05/2012</td>
-                            <td class="ta-left va-top">Pending</td>
-                            <td class="ta-left va-top">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in sagittis sem. Aliquam vitae egestas odio. Praesent euismod nunc vitae sapien cursus accumsan.</td>
-                        </tr>
-                        <tr>
-                            <td class="ta-left va-top">15/05/2012</td>
-                            <td class="ta-left va-top">Pending</td>
-                            <td class="ta-left va-top">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in sagittis sem. Aliquam vitae egestas odio. Praesent euismod nunc vitae sapien cursus accumsan.</td>
-                        </tr>
-                        </tbody>
                     </table>
                     <a href="/account/" class="button">Back</a>
                 </section>
