@@ -1,10 +1,7 @@
-/**
- * 
- */
 package edu.aptech.vn.action.admin;
 
-import edu.aptech.vn.model.Country;
-import edu.aptech.vn.model.User;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.apache.struts2.convention.annotation.Action;
@@ -14,37 +11,30 @@ import org.hibernate.Query;
 
 import com.opensymphony.xwork2.ModelDriven;
 
-import java.util.ArrayList;
-import java.util.List;
+import edu.aptech.vn.model.Product;
+import edu.aptech.vn.model.Project;
 
 /**
  * @author BinhHC
- * 
+ *
  */
-@Namespace("/admin/user")
-public class UserAction extends BaseAction implements ModelDriven {
-	
-	private static final Logger logger = Logger.getLogger(UserAction.class);
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3255656035736585211L;
-	private List<Country> countries = new ArrayList<Country>();
-	private List<User> users = new ArrayList<User>();
-	private User user = new User();
+@Namespace("/admin/product")
+public class ProductAction extends BaseAction implements ModelDriven {
 
-	@Action(value = "index", results = { @Result(name = "success", location = "list.jsp") })
+	private static final Logger logger = Logger.getLogger(ProductAction.class);
+	
+	@Action(value = "index", results = { @Result(name = "success", location = "index.jsp") })
 	public String execute() throws Exception {
 		try {
 			try {
 				page = Integer.parseInt(getParam("page"));
 			} catch (Exception e) {
 			} finally {
-				Query q = db.createQuery("from User u where u.status=1");
+				Query q = db.createQuery("from Product p where p.status=1");
 				paging(q.list().size());
 				q.setFirstResult(offset);
 				q.setMaxResults(PER_PAGE);
-				users = q.list();
+				products = q.list();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -60,11 +50,11 @@ public class UserAction extends BaseAction implements ModelDriven {
 				page = Integer.parseInt(getParam("page"));
 			} catch (Exception e) {
 			} finally {
-				Query q = db.createQuery("from User u where u.status=0");
+				Query q = db.createQuery("from Product p where p.status=0");
 				paging(q.list().size());
 				q.setFirstResult(offset);
 				q.setMaxResults(PER_PAGE);
-				users = q.list();
+				products = q.list();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -76,16 +66,15 @@ public class UserAction extends BaseAction implements ModelDriven {
 	
 	@Action(value = "add", results = { @Result(name = "success", location = "add.jsp") })
 	public String add() throws Exception {
-		countries = db.createQuery("from Country").list();
+		
 		return SUCCESS;
 	}
-
+	
 	@Action(value = "edit", results = { @Result(name = "success", location = "edit.jsp") })
 	public String edit() throws Exception {
 		int id = Integer.parseInt(getParam("id"));
 		try {
-			user = (User) db.get(User.class, id);
-			countries = db.createQuery("from Country").list();
+			product = (Product) db.get(Product.class, id);
 			return SUCCESS;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -93,17 +82,12 @@ public class UserAction extends BaseAction implements ModelDriven {
 		}
 		return ERROR;
 	}
-
+	
 	@Action(value = "update", results = { @Result(name = "success", type = "redirect", location = "index") })
 	public String update() throws Exception {
 		try {
-			if (user.getPassword().length() < 32) {
-				user.setPassword(md5(user.getPassword()));
-			}
 			db.beginTransaction();
-			user.setCountry((Country) db.get(Country.class,
-					Integer.parseInt(getParam("country_id"))));
-			db.update(user);
+			db.update(product);
 			db.getTransaction().commit();
 			return SUCCESS;
 		} catch (Exception e) {
@@ -112,16 +96,12 @@ public class UserAction extends BaseAction implements ModelDriven {
 		}
 		return ERROR;
 	}
-
+	
 	@Action(value = "doadd", results = { @Result(name = "success", type = "redirect", location = "index") })
 	public String addAction() {
 		try {
 			db.beginTransaction();
-			user.setPassword(md5(user.getPassword()));
-			user.setCountry((Country) db.get(Country.class,
-					Integer.parseInt(getParam("country_id"))));
-			user.setStatus(1);
-			db.save(user);
+			db.save(product);
 			db.getTransaction().commit();
 			return SUCCESS;
 		} catch (Exception e) {
@@ -129,56 +109,41 @@ public class UserAction extends BaseAction implements ModelDriven {
 		}
 
 	}
+	
+	/**
+	 * @return the products
+	 */
+	public List<Product> getProducts() {
+		return products;
+	}
 
 	/**
-	 * @param countries
-	 *            the countries to set
+	 * @param products the products to set
 	 */
-	public void setCountries(List<Country> countries) {
-		this.countries = countries;
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 
 	/**
-	 * @return the countries
+	 * @return the product
 	 */
-	public List<Country> getCountries() {
-		return countries;
+	public Product getProduct() {
+		return product;
 	}
 
-	public List<User> getUsers() {
-		return users;
+	/**
+	 * @param product the product to set
+	 */
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
+	private List<Product> products = new ArrayList<Product>();
+	private Product product = new Product();
+	
 	@Override
 	public Object getModel() {
-
-		return user;
-	}
-
-	/**
-	 * @param page the page to set
-	 */
-	public void setPage(int page) {
-		this.page = page;
-	}
-
-	/**
-	 * @return the page
-	 */
-	public int getPage() {
-		return page;
+		return product;
 	}
 
 }
