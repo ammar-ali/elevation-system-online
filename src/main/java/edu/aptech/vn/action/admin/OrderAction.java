@@ -69,6 +69,24 @@ public class OrderAction extends BaseAction implements ModelDriven {
 		return ERROR;
 	}
 	
+	@Action(value = "updateStatus", results = { @Result(name = "success", type="redirect", location = "index") })
+	public String updateStatus() throws Exception {
+		int id = Integer.parseInt(getParam("id"));
+		int status = Integer.parseInt(getParam("order_status"));
+		try {
+			order = (Order) db.get(Order.class, id);
+			order.setStatus(status);
+			db.beginTransaction();
+			db.update(order);
+			db.getTransaction().commit();
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.info(e.getMessage());
+		}
+		return ERROR;
+	}
+	
 	@Override
 	public Object getModel() {
 		return order;

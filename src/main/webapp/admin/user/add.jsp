@@ -3,7 +3,11 @@
 <jsp:include page="/admin/header.jsp" />
 <jsp:include page="/admin/menu.jsp" />
 <jsp:include page="/admin/loginCheck.jsp" />
-
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('form').validationEngine();
+	});
+</script>
 	<!--  start page-heading -->
 	<div id="page-heading">
 		<h1>Add User</h1>
@@ -45,12 +49,12 @@
 		<table border="0" cellpadding="0" cellspacing="0"  id="id-form">
 			<tr>
 				<th valign="top">Username:</th>
-				<td><input type="text" name="username" class="inp-form" /></td>
+				<td><input type="text" name="username" class="validate[required]" /></td>
 				<td></td>
 			</tr>
 			<tr>
 				<th valign="top">Password:</th>
-				<td><input type="password" name="password" class="inp-form" /></td>
+				<td><input type="password" name="password" class="inp-form validate[required]" /></td>
 				<td></td>
 			</tr>
 			<tr>
@@ -60,7 +64,7 @@
 			</tr>
 			<tr>
 				<th valign="top">Name:</th>
-				<td><input type="text" name="name" class="inp-form" /></td>
+				<td><input type="text" name="name" class="inp-form validate[required]" /></td>
 				<td></td>
 			</tr>
 			<tr>

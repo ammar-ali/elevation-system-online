@@ -93,6 +93,40 @@ public class UserAction extends BaseAction implements ModelDriven {
 		}
 		return ERROR;
 	}
+	
+	@Action(value = "del", results = { @Result(name = "success", type="redirect", location = "index") })
+	public String delete() throws Exception {
+		int id = Integer.parseInt(getParam("id"));
+		try {
+			user = (User) db.get(User.class, id);
+			user.setStatus(0);
+			db.beginTransaction();
+			db.update(user);
+			db.getTransaction().commit();
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.info(e.getMessage());
+		}
+		return ERROR;
+	}
+	
+	@Action(value = "undel", results = { @Result(name = "success", type="redirect", location = "index") })
+	public String undelete() throws Exception {
+		int id = Integer.parseInt(getParam("id"));
+		try {
+			user = (User) db.get(User.class, id);
+			user.setStatus(1);
+			db.beginTransaction();
+			db.update(user);
+			db.getTransaction().commit();
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.info(e.getMessage());
+		}
+		return ERROR;
+	}
 
 	@Action(value = "update", results = { @Result(name = "success", type = "redirect", location = "index") })
 	public String update() throws Exception {

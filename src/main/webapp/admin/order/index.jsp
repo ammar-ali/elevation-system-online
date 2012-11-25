@@ -1,9 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ page import="edu.aptech.vn.model.Order" %>
 <jsp:include page="/admin/header.jsp" />
 <jsp:include page="/admin/menu.jsp" />
 <jsp:include page="/admin/loginCheck.jsp" />
-
 	<!--  start page-heading -->
 	<div id="page-heading">
 		<h1>List orders</h1>
@@ -44,13 +44,20 @@
 				<tr>
 					<td><input  type="checkbox"/></td>
 					<td><s:property value="name"/></td>
-					<td><s:property value="payment"/></td>
+					<td><s:property value="payment.name"/></td>
 					<td><s:property value="address"/></td>
-					<td><s:property value="status"/></td>
+					<td>
+						<select id="order_status" name="order_status" class="order_status">
+							<option value="0 <s:property value="id"/>" <s:if test="%{status==0}">selected</s:if>>pending</option>
+							<option value="1 <s:property value="id"/>" <s:if test="%{status==1}">selected</s:if>>processed</option>
+							<option value="2 <s:property value="id"/>" <s:if test="%{status==2}">selected</s:if>>shipped</option>
+							<option value="3 <s:property value="id"/>" <s:if test="%{status==3}">selected</s:if>>cancelled</option>
+						</select>
+					</td>
 					<td><s:property value="created"/></td>
 					<td class="options-width">
 					<a href="view?id=<s:property value="id"/>" title="Detail" class="icon-1 info-tooltip"></a>
-					<a href="" title="Delete" class="icon-2 info-tooltip"></a>
+					
 					</td>
 				</tr>
 				</s:iterator>

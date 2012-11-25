@@ -3,7 +3,6 @@
 <jsp:include page="/admin/header.jsp" />
 <jsp:include page="/admin/menu.jsp" />
 <jsp:include page="/admin/loginCheck.jsp" />
-
 	<!--  start page-heading -->
 	<div id="page-heading">
 		<h1>Edit User</h1>
@@ -100,10 +99,10 @@
 				<th valign="top">Type:</th>
 				<td>
 				<select name="type"  class="styledselect_form_1">
-				<option value="0" <s:if test="%{type==0}">
+				<option value="0" <s:if test="%{user.type==0}">
 				    selected
 				</s:if> >User</option>
-				<option value="1" <s:if test="%{type==1}">
+				<option value="1" <s:if test="%{user.type==1}">
 				    selected
 				</s:if>>Admin</option>
 				</select>
