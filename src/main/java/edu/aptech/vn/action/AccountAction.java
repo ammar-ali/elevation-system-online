@@ -33,6 +33,7 @@ public class AccountAction extends BaseAction implements ModelDriven {
 			countries = db.createQuery("from Country").list();
 			Criteria criteria = db.createCriteria(Order.class);
 			criteria.add(Restrictions.eq("user_id", ((User) getSession("user")).getId()));
+			criteria.addOrder(org.hibernate.criterion.Order.desc("id"));
 			userOrders = criteria.list();
 			if (getParam("name") != null) {
 				try {

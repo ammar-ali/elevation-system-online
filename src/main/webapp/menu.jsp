@@ -6,8 +6,10 @@
 <header>
     <div id="logo"><a href="/"><img src="/images/logo.png" alt="Oceanic Store"></a></div>
                     <span id="search">
-                        <input type="text" name="filter_name">
-                        <span class="button-search"></span>
+                        <form action="/search">
+                            <input type="text" name="s">
+                            <input type="submit" value="" class="button-search"/>
+                        </form>
                     </span>
     <br>
     <% if (!AccountAction.isLogged()) { %>

@@ -1,6 +1,5 @@
 package edu.aptech.vn.utils;
 
-import com.opensymphony.xwork2.ActionSupport;
 import edu.aptech.vn.model.OrderProduct;
 import edu.aptech.vn.model.Product;
 import org.hibernate.Session;
@@ -13,7 +12,7 @@ import java.util.Map;
  * Date: 11/26/12
  * Time: 12:30 AM
  */
-public class ShoppingCart extends ActionSupport {
+public class ShoppingCart {
 	protected final Session db = HibernateUtil.getSession().openSession();
 	private Map<Integer, OrderProduct> products = new HashMap<Integer, OrderProduct>();
 

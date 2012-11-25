@@ -1650,11 +1650,13 @@ footer h2 {
 }
 
 .product-info .cart .button {
-    position: relative;
-    top: -1px;
     margin-bottom: -1px;
     font-weight: 700;
-    margin-right: 10px
+    margin-right: 10px;
+    width: 92px;
+    height: 30px;
+    color: white;
+    line-height: 20px;
 }
 
 .product-info .button-icon {
