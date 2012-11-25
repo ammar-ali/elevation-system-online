@@ -26,24 +26,24 @@
                         <p><b>Register Account</b><br>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
 
                         <div class="form-inline">
-                            <form action="/account/login" method="POST" id="login">
+                            <form action="/account/login" method="POST">
                                 <input type="hidden" name="register" value="1">
 
                                 <div class="field">
                                     <label>Username:</label>
-                                    <input type="text" name="username" class="validate[required]" id="username0">
+                                    <input type="text" name="username" class="validate[required]">
                                 </div>
                                 <div class="field">
                                     <label>Password:</label>
-                                    <input type="password" name="password" class="validate[required]" id="password0">
+                                    <input type="password" name="password" class="validate[required]">
                                 </div>
                                 <div class="field">
                                     <label>Email:</label>
-                                    <input type="text" name="email" class="validate[required]" id="email">
+                                    <input type="text" name="email" class="validate[required,custom[email]]">
                                 </div>
                                 <div class="field">
                                     <label>Full name:</label>
-                                    <input type="text" name="name" class="validate[required]" id="fullname">
+                                    <input type="text" name="name" class="validate[required]">
                                 </div>
                                 <div class="field">
                                     <input type="submit" value="Continue" class="button">
@@ -56,15 +56,15 @@
                     <div class="content">
                         <h2>Returning Customer</h2>
                         <div class="form-inline">
-                            <form action="/account/login" method="POST" id="login">
+                            <form action="/account/login" method="POST">
                                 <p>I am a returning customer</p>
                                 <div class="field">
                                     <label>Username:</label>
-                                    <input type="text" name="username" class="validate[required]" id="username">
+                                    <input type="text" name="username" class="validate[required]">
                                 </div>
                                 <div class="field">
                                     <label>Password:</label>
-                                    <input type="password" name="password" class="validate[required]" id="password">
+                                    <input type="password" name="password" class="validate[required]">
                                 </div>
                                 <div class="field">
                                     <input type="submit" value="Continue" class="button">

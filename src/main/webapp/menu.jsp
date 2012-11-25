@@ -23,69 +23,38 @@
         </div>
         <div class="cart-wrap">
             <div class="cart-text">Shopping Cart</div>
-            <div class="cart-count">4 item(s)</div>
+            <div class="cart-count"><s:property value="#session.cart.products.size()"/> item(s)</div>
         </div>
         <div class="drop-content">
             <div class="drop-body">
                 <table class="cart-list">
                     <tbody>
-                    <tr>
-                        <td class="image"><a href="product.html"><img src="../os/cart1.jpg" alt="Product Name"></a></td>
-                        <td class="name ta-left"><a href="product.html">Product Name</a>
-
-                            <div></div>
-                        </td>
-                        <td class="quantity ta-center">2</td>
-                        <td class="total">$1800.00</td>
-                        <td class="remove">
-                            <div></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="image"><a href="product.html"><img src="../os/cart2.jpg" alt="Product Name"></a></td>
-                        <td class="name ta-left"><a href="product.html">Product Name</a>
-
-                            <div></div>
-                        </td>
-                        <td class="quantity ta-center">1</td>
-                        <td class="total">$600.00</td>
-                        <td class="remove">
-                            <div></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="image"><a href="product.html"><img src="../os/cart3.jpg" alt="Product Name"></a></td>
-                        <td class="name ta-left"><a href="product.html">Product Name</a>
-
-                            <div></div>
-                        </td>
-                        <td class="quantity ta-center">1</td>
-                        <td class="total">$800.00</td>
-                        <td class="remove">
-                            <div></div>
-                        </td>
-                    </tr>
+                    <s:iterator value="#session.cart.products">
+                        <s:iterator value="value">
+                            <tr>
+                                <td class="image"><a href="/product?id=<s:property value="product.id"/>"><img src="<s:property value="product.getImage()"/>" alt="<s:property value="product.name"/>"></a></td>
+                                <td class="name ta-left"><a href="/product?id=<s:property value="product.id"/>"><s:property value="product.name"/></a>
+                                    <div></div>
+                                </td>
+                                <td class="quantity ta-center"><s:property value="quantity"/></td>
+                                <td class="total">$<s:property value="quantity * price"/></td>
+                                <td class="remove"><a href="/cart/remove?id=<s:property value="product.id"/>" title="Remove"></a></td>
+                            </tr>
+                        </s:iterator>
+                    </s:iterator>
                     </tbody>
                 </table>
                 <table class="cart-end">
                     <tbody>
                     <tr>
-                        <th>Sub-Total:</th>
-                        <td>$3200.00</td>
-                    </tr>
-                    <tr>
-                        <th>Eco Tax (-2.00):</th>
-                        <td>$8.00</td>
-                    </tr>
-                    <tr>
                         <th>Total:</th>
-                        <td>$3208.00</td>
+                        <td>$<s:property value="#session.cart.total"/></td>
                     </tr>
                     </tbody>
                 </table>
                 <div class="cart-buttons">
-                    <a href="checkout.html" class="button button-small button-alt">Checkout</a>
-                    <a href="cart.html" class="button button-small">View Cart</a>
+                    <a href="/cart/checkout" class="button button-small button-alt">Checkout</a>
+                    <a href="/cart" class="button button-small">View Cart</a>
                 </div>
             </div>
         </div>

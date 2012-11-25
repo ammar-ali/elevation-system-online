@@ -102,9 +102,8 @@ public class AccountAction extends BaseAction implements ModelDriven {
     })
 	public String order() throws Exception {
 		Criteria criteria = db.createCriteria(Order.class);
-		criteria.add(Restrictions.eq("id", getId()));
+		criteria.add(Restrictions.eq("id", Integer.parseInt(getParam("id"))));
 		criteria.add(Restrictions.eq("user_id", ((User) getSession("user")).getId()));
-		System.out.println(getId());
 		order = (Order) criteria.uniqueResult();
 		if (order == null) {
 			addActionError("Order not found");
