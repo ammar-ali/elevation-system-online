@@ -13,6 +13,7 @@ import com.opensymphony.xwork2.ModelDriven;
 
 import edu.aptech.vn.model.Product;
 import edu.aptech.vn.model.Project;
+import edu.aptech.vn.model.User;
 
 /**
  * @author BinhHC
@@ -62,6 +63,40 @@ public class ProductAction extends BaseAction implements ModelDriven {
 			return ERROR;
 		}
 		return SUCCESS;
+	}
+	
+	@Action(value = "del", results = { @Result(name = "success", type="redirect", location = "index") })
+	public String delete() throws Exception {
+		int id = Integer.parseInt(getParam("id"));
+		try {
+			product = (Product) db.get(Product.class, id);
+			product.setStatus(0);
+			db.beginTransaction();
+			db.update(product);
+			db.getTransaction().commit();
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.info(e.getMessage());
+		}
+		return ERROR;
+	}
+	
+	@Action(value = "undel", results = { @Result(name = "success", type="redirect", location = "index") })
+	public String undelete() throws Exception {
+		int id = Integer.parseInt(getParam("id"));
+		try {
+			product = (Product) db.get(Product.class, id);
+			product.setStatus(1);
+			db.beginTransaction();
+			db.update(product);
+			db.getTransaction().commit();
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.info(e.getMessage());
+		}
+		return ERROR;
 	}
 	
 	@Action(value = "add", results = { @Result(name = "success", location = "add.jsp") })

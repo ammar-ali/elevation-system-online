@@ -46,7 +46,7 @@
 					<td><s:property value="created"/></td>
 					<td class="options-width">
 					<a href="edit?id=<s:property value="id"/>" title="Edit" class="icon-1 info-tooltip"></a>
-					<a href="" title="Delete" class="icon-2 info-tooltip"></a>
+					<a href="del?id=<s:property value="id"/>" title="Delete" class="icon-2 info-tooltip"></a>
 					</td>
 				</tr>
 				</s:iterator>

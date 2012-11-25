@@ -69,6 +69,40 @@ public class ProjectAction extends BaseAction implements ModelDriven {
 		return SUCCESS;
 	}
 	
+	@Action(value = "del", results = { @Result(name = "success", type="redirect", location = "index") })
+	public String delete() throws Exception {
+		int id = Integer.parseInt(getParam("id"));
+		try {
+			project = (Project) db.get(Project.class, id);
+			project.setStatus(0);
+			db.beginTransaction();
+			db.update(project);
+			db.getTransaction().commit();
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.info(e.getMessage());
+		}
+		return ERROR;
+	}
+	
+	@Action(value = "undel", results = { @Result(name = "success", type="redirect", location = "index") })
+	public String undelete() throws Exception {
+		int id = Integer.parseInt(getParam("id"));
+		try {
+			project = (Project) db.get(Project.class, id);
+			project.setStatus(1);
+			db.beginTransaction();
+			db.update(project);
+			db.getTransaction().commit();
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.info(e.getMessage());
+		}
+		return ERROR;
+	}
+	
 	@Action(value = "add", results = { @Result(name = "success", location = "add.jsp") })
 	public String add() throws Exception {
 		
