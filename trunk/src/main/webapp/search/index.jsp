@@ -31,31 +31,23 @@
             </section>
         </aside>
         <div id="content-center">
-            <section class="product-info">
-                <div class="left">
-                    <img src="<s:property value="product.getImage()"/>" alt="image">
-                </div>
-                <div class="right">
-                    <div class="description">
-                        <div class="price">
-                            <div class="price-new">$<s:property value="product.price"/></div>
+
+            <section class="grid">
+                <s:iterator value="products">
+                    <div class="wrap">
+                        <div class="struct">
+                            <div class="frame">
+                                <a href="/product?id=<s:property value="id"/>" class="image"><img src="<s:property value="getImage()"/>" alt="<s:property value="name"/>"></a>
+                                <div class="name"><a href="/product?id=<s:property value="id"/>"><s:property value="name"/></a></div>
+                                <div class="price">$<s:property value="price"/></div>
+                                <div class="buttons">
+                                    <a href="/cart/add?id=<s:property value="id"/>&q=1" class="button">Add to cart</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="cart">
-                        <form action="/cart/add">
-                            Qty: <input type="text" name="q" value="1">
-                            <input type="hidden" name="id" value="<s:property value="product.id"/>">
-                            <input type="submit" value="Add to cart" class="button button-alt">
-                        </form>
-                    </div>
-
-                </div>
+                </s:iterator>
             </section>
-
-            <div id="tab-description" class="typography product-description">
-                <s:property value="product.description"/>
-            </div>
         </div>
     </div>
 </div>

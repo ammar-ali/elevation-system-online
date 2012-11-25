@@ -31,6 +31,7 @@
                         <b>Order ID:</b> #<s:property value="order.id"/> <br>
                         <b>Date Added:</b> <s:property value="order.created"/><br>
                         <b>Payment Method:</b> <s:property value="order.payment.name"/><br>
+                        <b>Status:</b> <s:property value="order.statusText"/><br>
                     </p>
 
                     <div class="fluid50">
