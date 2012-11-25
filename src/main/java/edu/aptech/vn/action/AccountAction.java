@@ -45,7 +45,7 @@ public class AccountAction extends BaseAction implements ModelDriven {
 					user.setId(u.getId());
 					user.setUsername(u.getUsername());
 					user.setCountry((Country) db.get(Country.class, Integer.parseInt(getParam("country_id"))));
-					db.update(user);
+					db.merge(user);
 					db.getTransaction().commit();
 
 					setSession("user", db.get(User.class, u.getId()));

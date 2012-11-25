@@ -23,7 +23,7 @@ public class Product extends BaseModel {
 
     @Transient
     public String getImage() {
-        return "/uploads/no_image.gif";
+		return "/uploads/" + getId() + ".jpg";
     }
 
     @Transient

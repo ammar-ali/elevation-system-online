@@ -54,7 +54,7 @@
             </section>
 
             <div id="tab-description" class="typography product-description">
-                <s:property value="product.description"/>
+                <s:property value="product.description" escape="false"/>
             </div>
         </div>
     </div>
