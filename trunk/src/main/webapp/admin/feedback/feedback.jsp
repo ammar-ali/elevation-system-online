@@ -6,17 +6,17 @@
 
 	<!--  start page-heading -->
 	<div id="page-heading">
-		<h1>Add product</h1>
+		<h1>Feedbacks</h1>
 	</div>
 	<!-- end page-heading -->
 
 	<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
 	<tr>
-		<th rowspan="3" class="sized"><img src="images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+		<th rowspan="3" class="sized"><img src="<%=request.getContextPath()%>/admin/images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
 		<th class="topleft"></th>
 		<td id="tbl-border-top">&nbsp;</td>
 		<th class="topright"></th>
-		<th rowspan="3" class="sized"><img src="images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+		<th rowspan="3" class="sized"><img src="<%=request.getContextPath()%>/admin/images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
 	</tr>
 	
 	<tr>
@@ -29,107 +29,31 @@
 			<div id="table-content">
 					
 					<!--  start product-table ..................................................................................... -->
-				<form id="mainform" action="add" method="POST">
+				<form id="mainform" action="list" method="POST">
 				<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
 				<tr>
 					<th class="table-header-check"><a id="toggle-all" ></a> </th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Last Name</a>	</th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">First Name</a></th>
-					<th class="table-header-repeat line-left"><a href="">Email</a></th>
-					<th class="table-header-repeat line-left"><a href="">Due</a></th>
-					<th class="table-header-repeat line-left"><a href="">Website</a></th>
+					<th class="table-header-repeat line-left minwidth-1"><a href="">Name</a>	</th>
+					<th class="table-header-repeat line-left minwidth-1"><a href="">Email</a></th>
+					<th class="table-header-repeat line-left"><a href="">Description</a></th>
+					<th class="table-header-repeat line-left"><a href="">Rating</a></th>
+					<th class="table-header-repeat line-left"><a href="">Created</a></th>
 					<th class="table-header-options line-left"><a href="">Options</a></th>
 				</tr>
+				<s:iterator value="feedbacks">
 				<tr>
 					<td><input  type="checkbox"/></td>
-					<td>Sabev</td>
-					<td>George</td>
-					<td><a href="">george@mainevent.co.za</a></td>
-					<td>R250</td>
-					<td><a href="">www.mainevent.co.za</a></td>
+					<td><s:property value="name"/></td>
+					<td><s:property value="email"/></td>
+					<td><s:property value="description"/></td>
+					<td><s:property value="rating"/></td>
+					<td><s:property value="created"/></td>
 					<td class="options-width">
-					<a href="" title="Edit" class="icon-1 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-2 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-3 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-4 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-5 info-tooltip"></a>
+					
 					</td>
 				</tr>
-				<tr class="alternate-row">
-					<td><input  type="checkbox"/></td>
-					<td>Sabev</td>
-					<td>George</td>
-					<td><a href="">george@mainevent.co.za</a></td>
-					<td>R250</td>
-					<td><a href="">www.mainevent.co.za</a></td>
-					<td class="options-width">
-					<a href="" title="Edit" class="icon-1 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-2 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-3 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-4 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-5 info-tooltip"></a>
-					</td>
-				</tr>
-				<tr>
-					<td><input  type="checkbox"/></td>
-					<td>Sabev</td>
-					<td>George</td>
-					<td><a href="">george@mainevent.co.za</a></td>
-					<td>R250</td>
-					<td><a href="">www.mainevent.co.za</a></td>
-					<td class="options-width">
-					<a href="" title="Edit" class="icon-1 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-2 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-3 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-4 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-5 info-tooltip"></a>
-					</td>
-				</tr>
-				<tr class="alternate-row">
-					<td><input  type="checkbox"/></td>
-					<td>Sabev</td>
-					<td>George</td>
-					<td><a href="">george@mainevent.co.za</a></td>
-					<td>R250</td>
-					<td><a href="">www.mainevent.co.za</a></td>
-					<td class="options-width">
-					<a href="" title="Edit" class="icon-1 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-2 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-3 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-4 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-5 info-tooltip"></a>
-					</td>
-				</tr>
-				<tr>
-					<td><input  type="checkbox"/></td>
-					<td>Sabev</td>
-					<td>George</td>
-					<td><a href="">george@mainevent.co.za</a></td>
-					<td>R250</td>
-					<td><a href="">www.mainevent.co.za</a></td>
-					<td class="options-width">
-					<a href="" title="Edit" class="icon-1 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-2 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-3 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-4 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-5 info-tooltip"></a>
-					</td>
-				</tr>
-				<tr class="alternate-row">
-					<td><input  type="checkbox"/></td>
-					<td>Sabev</td>
-					<td>George</td>
-					<td><a href="">george@mainevent.co.za</a></td>
-					<td>R250</td>
-					<td><a href="">www.mainevent.co.za</a></td>
-					<td class="options-width">
-					<a href="" title="Edit" class="icon-1 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-2 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-3 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-4 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-5 info-tooltip"></a>
-					</td>
-				</tr>
+				</s:iterator>
+				
 				</table>
 				<!--  end product-table................................... --> 
 				</form>
@@ -141,19 +65,11 @@
 			<table border="0" cellpadding="0" cellspacing="0" id="paging-table">
 			<tr>
 			<td>
-				<a href="" class="page-far-left"></a>
-				<a href="" class="page-left"></a>
-				<div id="page-info">Page <strong>1</strong> / 15</div>
-				<a href="" class="page-right"></a>
-				<a href="" class="page-far-right"></a>
-			</td>
-			<td>
-			<select  class="styledselect_pages">
-				<option value="">Number of rows</option>
-				<option value="">1</option>
-				<option value="">2</option>
-				<option value="">3</option>
-			</select>
+				<a href="?page=1" class="page-far-left"></a>
+				<a href="?page=<s:property value="previousPage"/>" class="page-left"></a>
+				<div id="page-info">Page <strong><s:property value="page"/></strong> / <s:property value="lastPage"/></div>
+				<a href="?page=<s:property value="nextPage"/>" class="page-right"></a>
+				<a href="?page=<s:property value="lastPage"/>" class="page-far-right"></a>
 			</td>
 			</tr>
 			</table>
@@ -173,35 +89,5 @@
 		<th class="sized bottomright"></th>
 	</tr>
 	</table>
-
-
-<s:form action="add" method="POST">
-   <s:textfield name="name" id="name" label="name"/>
-   <s:textfield name="email" id="email" label="email"/>
-   <s:textfield name="description" id="description" label="description"/>
-   <s:textfield name="rating" id="rating" label="rating"/>
-   <s:hidden name="created" id="created" value=""/>
-   <s:submit/>
-   
-   <table>
-      <tr>
-         <td>name</td>
-         <td>email</td>
-         <td>description</td>
-         <td>rating</td>
-         <td>created</td>
-      </tr>
-      <s:iterator value="feedbacks">	
-         <tr>
-            <td><s:property value="name"/></td>
-            <td><s:property value="email"/></td>
-            <td><s:property value="description"/></td>
-            <td><s:property value="rating"/></td>
-            <td><s:property value="created"/>
-           </tr>
-      </s:iterator>	
-   </table>
-   </s:form>
-   
   
  <jsp:include page="/admin/footer.jsp" />

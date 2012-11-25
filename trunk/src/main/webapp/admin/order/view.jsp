@@ -6,7 +6,7 @@
 
 	<!--  start page-heading -->
 	<div id="page-heading">
-		<h1>List User</h1>
+		<h1>Order details</h1>
 	</div>
 	<!-- end page-heading -->
 
@@ -33,24 +33,21 @@
 				<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
 				<tr>
 					<th class="table-header-check"><a id="toggle-all" ></a> </th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Username</a>	</th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Email</a></th>
-					<th class="table-header-repeat line-left"><a href="">Address</a></th>
-					<th class="table-header-repeat line-left"><a href="">City</a></th>
-					<th class="table-header-repeat line-left"><a href="">Phone</a></th>
+					<th class="table-header-repeat line-left"><a href="">OrderId</a>	</th>
+					<th class="table-header-repeat line-left minwidth-1"><a href="">Product</a></th>
+					<th class="table-header-repeat line-left"><a href="">Quantity</a></th>
+					<th class="table-header-repeat line-left"><a href="">Price</a></th>
 					<th class="table-header-options line-left"><a href="">Options</a></th>
 				</tr>
-				<s:iterator value="users">
+				<s:iterator value="orderDetail" >
 				<tr>
 					<td><input  type="checkbox"/></td>
-					<td><s:property value="username"/></td>
-					<td><s:property value="email"/></td>
-					<td><s:property value="address"/></td>
-					<td><s:property value="city"/></td>
-					<td><s:property value="phone"/></td>
+					<td><s:property value="id"/></td>
+					<td><s:property value="getProduct().getName()"/></td>
+					<td><s:property value="quantity"/></td>
+					<td><s:property value="price"/></td>
 					<td class="options-width">
-					<a href="edit?id=<s:property value="id"/>" title="Edit" class="icon-1 info-tooltip"></a>
-					<a href="" title="Delete" class="icon-2 info-tooltip"></a>
+					
 					</td>
 				</tr>
 				</s:iterator>
@@ -61,31 +58,6 @@
 			
 			</div>
 			<!--  end content-table  -->
-			
-			<!--  start actions-box ............................................... -->
-			<!-- <div id="actions-box">
-				<a href="" class="action-slider"></a>
-				<div id="actions-box-slider">
-					<a href="" class="action-edit">Show Deleted</a>
-					<a href="" class="action-delete">Hide Deleted</a>
-				</div>
-				<div class="clear"></div>
-			</div> -->
-			<!-- end actions-box........... -->
-			
-		<!--  start paging..................................................... -->
-			<table border="0" cellpadding="0" cellspacing="0" id="paging-table">
-			<tr>
-			<td>
-				<a href="?page=1" class="page-far-left"></a>
-				<a href="?page=<s:property value="previousPage"/>" class="page-left"></a>
-				<div id="page-info">Page <strong><s:property value="page"/></strong> / <s:property value="lastPage"/></div>
-				<a href="?page=<s:property value="nextPage"/>" class="page-right"></a>
-				<a href="?page=<s:property value="lastPage"/>" class="page-far-right"></a>
-			</td>
-			</tr>
-			</table>
-			<!--  end paging................ -->
 			
 			<div class="clear"></div>
 		 

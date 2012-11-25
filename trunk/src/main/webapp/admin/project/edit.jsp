@@ -6,7 +6,7 @@
 
 	<!--  start page-heading -->
 	<div id="page-heading">
-		<h1>Add User</h1>
+		<h1>Edit project</h1>
 	</div>
 	<!-- end page-heading -->
 
@@ -34,7 +34,7 @@
 		<!--  start step-holder -->
 		<div id="step-holder">
 			<div class="step-no"> </div>
-			<div class="step-dark-left"><a href="">Add user details</a></div>
+			<div class="step-dark-left"><a href="">Edit project detail</a></div>
 			<div class="step-dark-right">&nbsp;</div>
 			<div class="clear"></div>
 		</div>
@@ -44,69 +44,19 @@
 		<!-- start id-form -->
 		<table border="0" cellpadding="0" cellspacing="0"  id="id-form">
 			<tr>
-				<th valign="top">Username:</th>
-				<td><input type="text" name="username" class="inp-form" /></td>
-				<td></td>
-			</tr>
-			<tr>
-				<th valign="top">Password:</th>
-				<td><input type="password" name="password" class="inp-form" /></td>
-				<td></td>
-			</tr>
-			<tr>
-				<th valign="top">Email:</th>
-				<td><input type="text" name="email" class="inp-form" /></td>
-				<td></td>
-			</tr>
-			<tr>
 				<th valign="top">Name:</th>
-				<td><input type="text" name="name" class="inp-form" /></td>
+				<td><input type="text" name="name" value="<s:property value="project.name"/>" class="inp-form" /></td>
 				<td></td>
 			</tr>
 			<tr>
-				<th valign="top">Address:</th>
-				<td><input type="text" name="address" class="inp-form" /></td>
-				<td></td>
-			</tr>
-			<tr>
-				<th valign="top">City:</th>
-				<td><input type="text" name="city" class="inp-form" /></td>
-				<td></td>
-			</tr>
-			<tr>
-				<th valign="top">Country:</th>
-				<td>
-				<select name="country_id"  class="styledselect_form_1">
-					<s:iterator value="countries">
-					<option value="<s:property value="id"/>"><s:property value="name"/></option>
-					</s:iterator>
-				</select>
-				</td>
-				<td></td>
-			</tr>
-			<tr>
-				<th valign="top">Phone:</th>
-				<td><input type="text" name="phone" class="inp-form" /></td>
-				<td></td>
-			</tr>
-			<tr>
-				<th valign="top">Company:</th>
-				<td><input type="text" name="company" class="inp-form" /></td>
-				<td></td>
-			</tr>
-			<tr>
-				<th valign="top">Type:</th>
-				<td>
-				<select name="type"  class="styledselect_form_1">
-				<option value="0">User</option>
-				<option value="1">Admin</option>
-				</select>
-				</td>
+				<th valign="top">Description:</th>
+				<td><textarea rows="" name="description" cols="" class="form-textarea">value="<s:property value="project.description"/>"</textarea></td>
 				<td></td>
 			</tr>
 	<tr>
 		<th>&nbsp;</th>
 		<td valign="top">
+			<input type="hidden" name="id" value="<s:property value="project.id"/>" />
 			<input type="submit" value="" class="form-submit" />
 			<input type="reset" value="" class="form-reset"  />
 		</td>
