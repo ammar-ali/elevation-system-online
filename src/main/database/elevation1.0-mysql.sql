@@ -496,7 +496,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `name`, `address`, `city`, `country_id`, `phone`, `company`, `type`, `status`, `created`) VALUES
-(1, 'longpro', 'a@bc.com', '202cb962ac59075b964b07152d234b70', 'Long', 'asd 1234', 'HN', 1, '+10123456789', '', 0, 1, '2012-11-24 17:53:08'),
+(1, 'longpro', 'a@bc.com', '202cb962ac59075b964b07152d234b70', 'Long', 'asd 1234', 'HN', 1, '+10123456789', '', 1, 1, '2012-11-24 17:53:08'),
 (2, 'longprao', 'longprao@gmail.com', '202cb962ac59075b964b07152d234b70', 'Graduation day', '', '', NULL, '', '', 0, 1, '2012-11-23 16:48:36');
 
 --
